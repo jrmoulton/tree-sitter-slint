@@ -3,10 +3,13 @@
 
 (var_identifier) @variable
 
-(variable_definition name: (var_identifier) @field)
+; (variable_definition name: (var_identifier) @field)
 
 (var_identifier
-  (post_identifier) @field)
+  (post_identifier) @variable)
+
+; (reference_identifier
+;   (post_identifier) @variable)
 
 (function_identifier) @function
 
