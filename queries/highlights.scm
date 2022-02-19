@@ -3,6 +3,8 @@
 
 (var_identifier) @variable
 
+(state_identifier) @field
+
 ; (variable_definition name: (var_identifier) @field)
 
 (var_identifier

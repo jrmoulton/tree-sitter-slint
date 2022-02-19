@@ -192,7 +192,7 @@
       "required": true,
       "types": [
         {
-          "type": "component_field_declaration_list",
+          "type": "field_declaration_list",
           "named": true
         },
         {
@@ -216,16 +216,6 @@
     "type": "component_definition",
     "named": true,
     "fields": {
-      "body": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "component_field_declaration_list",
-            "named": true
-          }
-        ]
-      },
       "name": {
         "multiple": false,
         "required": false,
@@ -256,74 +246,15 @@
       }
     },
     "children": {
-      "multiple": false,
-      "required": false,
+      "multiple": true,
+      "required": true,
       "types": [
+        {
+          "type": "field_declaration_list",
+          "named": true
+        },
         {
           "type": "visibility_modifier",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "component_field_declaration_list",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "animate_statement",
-          "named": true
-        },
-        {
-          "type": "callback_call",
-          "named": true
-        },
-        {
-          "type": "callback_definition",
-          "named": true
-        },
-        {
-          "type": "callback_event",
-          "named": true
-        },
-        {
-          "type": "component_definition",
-          "named": true
-        },
-        {
-          "type": "for_loop_definition",
-          "named": true
-        },
-        {
-          "type": "if_statement_definition",
-          "named": true
-        },
-        {
-          "type": "property_definition",
-          "named": true
-        },
-        {
-          "type": "states_definition",
-          "named": true
-        },
-        {
-          "type": "transitions_definition",
-          "named": true
-        },
-        {
-          "type": "var_identifier",
-          "named": true
-        },
-        {
-          "type": "variable_definition",
-          "named": true
-        },
-        {
-          "type": "variable_set_equal",
           "named": true
         }
       ]
@@ -390,6 +321,69 @@
         },
         {
           "type": "var_identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "field_declaration_list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "animate_statement",
+          "named": true
+        },
+        {
+          "type": "callback_call",
+          "named": true
+        },
+        {
+          "type": "callback_definition",
+          "named": true
+        },
+        {
+          "type": "callback_event",
+          "named": true
+        },
+        {
+          "type": "component_definition",
+          "named": true
+        },
+        {
+          "type": "for_loop_definition",
+          "named": true
+        },
+        {
+          "type": "if_statement_definition",
+          "named": true
+        },
+        {
+          "type": "property_definition",
+          "named": true
+        },
+        {
+          "type": "states_definition",
+          "named": true
+        },
+        {
+          "type": "transitions_definition",
+          "named": true
+        },
+        {
+          "type": "var_identifier",
+          "named": true
+        },
+        {
+          "type": "variable_definition",
+          "named": true
+        },
+        {
+          "type": "variable_set_equal",
           "named": true
         }
       ]
@@ -502,21 +496,20 @@
   {
     "type": "function_call",
     "named": true,
-    "fields": {
-      "function": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": "call_signature",
-            "named": true
-          },
-          {
-            "type": "function_identifier",
-            "named": true
-          }
-        ]
-      }
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "call_signature",
+          "named": true
+        },
+        {
+          "type": "function_identifier",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -533,7 +526,7 @@
       "required": true,
       "types": [
         {
-          "type": "component_field_declaration_list",
+          "type": "field_declaration_list",
           "named": true
         },
         {
@@ -568,11 +561,11 @@
           "named": true
         },
         {
-          "type": "component_field_declaration_list",
+          "type": "expression_body_paren",
           "named": true
         },
         {
-          "type": "expression_body_paren",
+          "type": "field_declaration_list",
           "named": true
         },
         {
@@ -890,6 +883,40 @@
     }
   },
   {
+    "type": "state_identifier",
+    "named": true,
+    "fields": {
+      "match_all": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "*",
+            "named": false
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "children_identifier",
+          "named": true
+        },
+        {
+          "type": "post_identifier",
+          "named": true
+        },
+        {
+          "type": "reference_identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "states_definition",
     "named": true,
     "fields": {},
@@ -921,11 +948,11 @@
           "named": true
         },
         {
-          "type": "component_field_declaration_list",
+          "type": "expression_body_paren",
           "named": true
         },
         {
-          "type": "expression_body_paren",
+          "type": "field_declaration_list",
           "named": true
         },
         {
@@ -934,6 +961,10 @@
         },
         {
           "type": "mult_binary_expression",
+          "named": true
+        },
+        {
+          "type": "state_identifier",
           "named": true
         },
         {
@@ -982,16 +1013,6 @@
     "type": "struct_definition",
     "named": true,
     "fields": {
-      "body": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "struct_field_declaration_list",
-            "named": true
-          }
-        ]
-      },
       "name": {
         "multiple": false,
         "required": true,
@@ -1022,9 +1043,13 @@
       }
     },
     "children": {
-      "multiple": false,
-      "required": false,
+      "multiple": true,
+      "required": true,
       "types": [
+        {
+          "type": "struct_field_declaration_list",
+          "named": true
+        },
         {
           "type": "visibility_modifier",
           "named": true
@@ -1169,11 +1194,11 @@
       "required": false,
       "types": [
         {
-          "type": "component_field_declaration_list",
+          "type": "field_declaration_list",
           "named": true
         },
         {
-          "type": "var_identifier",
+          "type": "state_identifier",
           "named": true
         }
       ]

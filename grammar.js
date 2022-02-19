@@ -6,14 +6,6 @@ module.exports = grammar({
     $.comment,
   ],
 
-  // externals: ($) => [
-  //   $._string_content,
-  // ],
-
-  // conflicts: ($) => [
-  //   [$.expression_body, $.component_field_declaration_list],
-  // ],
-
   rules: {
     source_file: ($) => repeat($._definition),
 
@@ -32,7 +24,7 @@ module.exports = grammar({
         "global",
         $.var_identifier,
         ":=",
-        $.component_field_declaration_list,
+        $.field_declaration_list,
       ),
 
     import_statement: ($) =>
@@ -61,7 +53,7 @@ module.exports = grammar({
         field("name", $._type_identifier),
         ":=",
         optional(field("super_type", $._type_identifier)),
-        field("body", $.struct_field_declaration_list),
+        $.struct_field_declaration_list,
       ),
 
     struct_field_declaration_list: ($) =>
@@ -82,10 +74,10 @@ module.exports = grammar({
         optional(field("name", $._type_identifier)),
         optional(":="),
         field("super_type", $._type_identifier),
-        field("body", $.component_field_declaration_list),
+        $.field_declaration_list,
       ),
 
-    component_field_declaration_list: ($) =>
+    field_declaration_list: ($) =>
       seq(
         "{",
         repeat(choice(
@@ -120,9 +112,9 @@ module.exports = grammar({
               "in",
               "out",
             ),
-            $.var_identifier,
+            alias($.var_identifier, $.state_identifier),
             ":",
-            $.component_field_declaration_list,
+            $.field_declaration_list,
           ),
         ),
         "]",
@@ -139,11 +131,11 @@ module.exports = grammar({
         "[",
         repeat(
           seq(
-            $.var_identifier,
+            alias($.var_identifier, $.state_identifier),
             "when",
             $._expression,
             ":",
-            $.component_field_declaration_list,
+            $.field_declaration_list,
           ),
         ),
         "]",
@@ -173,7 +165,7 @@ module.exports = grammar({
       seq(
         $.function_identifier,
         "=>",
-        $.component_field_declaration_list,
+        $.field_declaration_list,
       ),
     callback_call: ($) =>
       seq(
@@ -190,7 +182,7 @@ module.exports = grammar({
         ),
         optional($._expression),
         choice(
-          $.component_field_declaration_list,
+          $.field_declaration_list,
           seq(
             ":",
             $.component_definition,
@@ -208,7 +200,7 @@ module.exports = grammar({
         ":",
         $.component_definition,
         // $._type_identifier,
-        // $.component_field_declaration_list,
+        // $.field_declaration_list,
       ),
 
     for_loop_index: ($) =>
@@ -486,11 +478,7 @@ module.exports = grammar({
         $._identifier,
       ),
 
-    function_call: ($) =>
-      field(
-        "function",
-        seq($.function_identifier, $.call_signature),
-      ),
+    function_call: ($) => seq($.function_identifier, $.call_signature),
 
     reference_identifier: ($) =>
       choice(
