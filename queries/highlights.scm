@@ -4,7 +4,7 @@
 (var_identifier) @variable
 
 (var_identifier
-  (post_identifier) @function)
+  (post_identifier) @field)
 
 (function_identifier) @function
 
@@ -66,8 +66,6 @@
 "]"
 "{"
 "}"
-"<"
-">"
 ] @punctuation.bracket
 
 [
