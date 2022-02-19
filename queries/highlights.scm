@@ -3,6 +3,8 @@
 
 (var_identifier) @variable
 
+(variable_definition name: (var_identifier) @field)
+
 (var_identifier
   (post_identifier) @field)
 

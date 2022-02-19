@@ -74,6 +74,7 @@ module.exports = grammar({
           $.property_definition,
           $.callback_definition,
           $.variable_definition,
+          $.variable_set_equal,
           $.for_loop_definition,
           $.if_statement_definition,
           $.callback_event,
@@ -171,10 +172,15 @@ module.exports = grammar({
     variable_definition: ($) =>
       seq(
         field("name", $.var_identifier),
-        choice(
-          ":",
-          "=",
-        ),
+        ":",
+        $._expression,
+        ";",
+      ),
+
+    variable_set_equal: ($) =>
+      seq(
+        field("prev_name", $.var_identifier),
+        "=",
         $._expression,
         ";",
       ),
