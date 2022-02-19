@@ -35,6 +35,7 @@
 "for"
 "in"
 "if"
+"animate"
 ] @keyword
 
 [

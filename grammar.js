@@ -77,10 +77,31 @@ module.exports = grammar({
           $.variable_set_equal,
           $.for_loop_definition,
           $.if_statement_definition,
+          $.animate_statement,
           $.callback_event,
           $.callback_call,
           $.var_identifier,
         )),
+        "}",
+      ),
+
+    animate_statement: ($) =>
+      seq(
+        "animate",
+        $.var_identifier,
+        $.animate_declaration_list,
+      ),
+    animate_declaration_list: ($) =>
+      seq(
+        "{",
+        repeat(
+          seq(
+            $.builtin_type_identifier,
+            ":",
+            $._expression,
+            ";",
+          ),
+        ),
         "}",
       ),
 
@@ -205,8 +226,10 @@ module.exports = grammar({
           $.string,
           $.function_call,
           $.var_identifier,
+          $.builtin_type_identifier,
           $.unary_expression,
           $._binary_expression,
+          $.ternary_expression,
         ),
       ),
 
@@ -227,6 +250,7 @@ module.exports = grammar({
           $.add_binary_expression,
         ),
       ),
+
     mult_binary_expression: ($) =>
       prec.left(
         2,
@@ -235,6 +259,17 @@ module.exports = grammar({
           seq($._expression, "&&", $._expression),
           seq($._expression, "||", $._expression),
           seq($._expression, "/", $._expression),
+        ),
+      ),
+    ternary_expression: ($) =>
+      prec.left(
+        3,
+        seq(
+          $._expression,
+          "?",
+          $._expression,
+          ":",
+          $._expression,
         ),
       ),
 
@@ -250,7 +285,14 @@ module.exports = grammar({
     callback_definition: ($) =>
       seq(
         "callback",
-        $.function_call,
+        $.function_identifier,
+        optional($.call_signature),
+        optional(
+          seq(
+            "->",
+            $._type_identifier,
+          ),
+        ),
         ";",
       ),
 
@@ -407,6 +449,7 @@ module.exports = grammar({
       choice(
         "px",
         "%",
+        "ms",
       ),
 
     language_constant: ($) =>

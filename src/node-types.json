@@ -19,6 +19,48 @@
     }
   },
   {
+    "type": "animate_declaration_list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "builtin_type_identifier",
+          "named": true
+        },
+        {
+          "type": "expression_body",
+          "named": true
+        },
+        {
+          "type": "expression_body_paren",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "animate_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "animate_declaration_list",
+          "named": true
+        },
+        {
+          "type": "var_identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "builtin_type_identifier",
     "named": true,
     "fields": {}
@@ -59,11 +101,23 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
-          "type": "function_call",
+          "type": "builtin_type_identifier",
+          "named": true
+        },
+        {
+          "type": "call_signature",
+          "named": true
+        },
+        {
+          "type": "function_identifier",
+          "named": true
+        },
+        {
+          "type": "user_type_identifier",
           "named": true
         }
       ]
@@ -156,6 +210,10 @@
       "required": false,
       "types": [
         {
+          "type": "animate_statement",
+          "named": true
+        },
+        {
           "type": "callback_call",
           "named": true
         },
@@ -211,6 +269,10 @@
           "named": true
         },
         {
+          "type": "builtin_type_identifier",
+          "named": true
+        },
+        {
           "type": "function_call",
           "named": true
         },
@@ -220,6 +282,10 @@
         },
         {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "ternary_expression",
           "named": true
         },
         {
@@ -691,6 +757,25 @@
     }
   },
   {
+    "type": "ternary_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression_body",
+          "named": true
+        },
+        {
+          "type": "expression_body_paren",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "unary_expression",
     "named": true,
     "fields": {},
@@ -893,6 +978,10 @@
     "named": false
   },
   {
+    "type": "->",
+    "named": false
+  },
+  {
     "type": ".",
     "named": false
   },
@@ -929,6 +1018,10 @@
     "named": false
   },
   {
+    "type": "?",
+    "named": false
+  },
+  {
     "type": "@",
     "named": false
   },
@@ -942,6 +1035,10 @@
   },
   {
     "type": "angle",
+    "named": false
+  },
+  {
+    "type": "animate",
     "named": false
   },
   {
@@ -1050,6 +1147,10 @@
   },
   {
     "type": "length",
+    "named": false
+  },
+  {
+    "type": "ms",
     "named": false
   },
   {
