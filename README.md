@@ -35,3 +35,10 @@ For syntax highlighting the most important thing is to add the highlights.scm
 file from this repo's queries folder to your nvim configs in your
 `nvim/queries/slint` folder.
 
+
+## Just for fun
+
+To show off the highlighting and the language features here is this picture just for fun
+
+
+![Just for fun](images/all-features-updated.png)
