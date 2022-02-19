@@ -31,7 +31,7 @@ module.exports = grammar({
         commaSep($._type_identifier),
         "}",
         "from",
-        $.string_literal,
+        $.string,
         ";",
       ),
 
@@ -196,7 +196,7 @@ module.exports = grammar({
       seq(
         choice(
           $.value,
-          $.string_literal,
+          $.string,
           $.function_call,
           $.var_identifier,
           $.unary_expression,
@@ -268,7 +268,48 @@ module.exports = grammar({
         "*",
         "/",
       ),
-    string_literal: ($) => /".*?"/,
+
+    // This is taken from tree-sitter-javascript
+    // https://github.com/tree-sitter/tree-sitter-javascript/blob/fdeb68ac8d2bd5a78b943528bb68ceda3aade2eb/grammar.js#L866
+    /////////////////////////////////////////////////////////////////////
+    string: ($) =>
+      choice(
+        seq(
+          '"',
+          repeat(choice(
+            alias($.unescaped_double_string_fragment, $.string_fragment),
+            $.escape_sequence,
+          )),
+          '"',
+        ),
+        seq(
+          "'",
+          repeat(choice(
+            alias($.unescaped_single_string_fragment, $.string_fragment),
+            $.escape_sequence,
+          )),
+          "'",
+        ),
+      ),
+
+    unescaped_double_string_fragment: ($) =>
+      token.immediate(prec(1, /[^"\\]+/)),
+
+    // same here
+    unescaped_single_string_fragment: ($) =>
+      token.immediate(prec(1, /[^'\\]+/)),
+
+    escape_sequence: ($) =>
+      token.immediate(seq(
+        "\\",
+        choice(
+          /[^xu0-7]/,
+          /[0-7]{1,3}/,
+          /x[0-9a-fA-F]{2}/,
+          /u[0-9a-fA-F]{4}/,
+          /u{[0-9a-fA-F]+}/,
+        ),
+      )),
 
     escape_sequence: ($) =>
       token.immediate(
@@ -282,6 +323,7 @@ module.exports = grammar({
           ),
         ),
       ),
+    /////////////////////////////////////////////////////////////////////
 
     visibility_modifier: ($) => "export",
 
@@ -330,6 +372,16 @@ module.exports = grammar({
         $.value_with_units,
         $.number,
         $.language_constant,
+        $.color,
+      ),
+
+    color: ($) =>
+      seq(
+        "#",
+        choice(
+          /[\da-zA-Z]{3}/,
+          /[\da-zA-Z]{6}/,
+        ),
       ),
 
     value_with_units: ($) =>
@@ -337,10 +389,18 @@ module.exports = grammar({
         $.number,
         $.unit_type,
       ),
-    number: ($) => /\d+/,
+    number: ($) =>
+      choice(
+        $.int_number,
+        $.float_number,
+      ),
+    int_number: ($) => /\d+/,
+    float_number: ($) => /\d+\.\d+/,
+
     unit_type: ($) =>
       choice(
         "px",
+        "%",
       ),
 
     language_constant: ($) =>
@@ -359,6 +419,7 @@ module.exports = grammar({
         "yellow",
         "true",
         "false",
+        "transparent",
       ),
 
     builtin_type_identifier: ($) =>
@@ -368,7 +429,7 @@ module.exports = grammar({
           "angle",
           "bool",
           "brush",
-          "color",
+          // "color", // Having color as a builtin type causes problems because slint also uses color as a variable name
           "duration",
           "easing",
           "float",

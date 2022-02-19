@@ -16,7 +16,7 @@
 (comment) @comment
 
 (value) @number
-(string_literal) @string
+(string) @string
 
 [
 "struct"
@@ -34,6 +34,7 @@
 
 [
  "black"
+ "transparent"
  "blue"
  "ease"
  "ease_in"
@@ -73,7 +74,7 @@
 "angle"
 "bool"
 "brush"
-"color"
+; "color" // This causes problems
 "duration"
 "easing"
 "float"
