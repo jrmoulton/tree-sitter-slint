@@ -21,6 +21,18 @@ module.exports = grammar({
       choice(
         $.struct_definition,
         $.component_definition,
+        $.import_statement,
+      ),
+
+    import_statement: ($) =>
+      seq(
+        "import",
+        "{",
+        commaSep($._type_identifier),
+        "}",
+        "from",
+        $.string_literal,
+        ";",
       ),
 
     struct_definition: ($) =>

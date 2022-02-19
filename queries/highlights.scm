@@ -4,7 +4,7 @@
 (var_identifier) @variable
 
 (var_identifier
-  (post_identifier) @local.reference)
+  (post_identifier) @function)
 
 (function_identifier) @function
 
@@ -22,6 +22,8 @@
 "struct"
 "property"
 "callback"
+"import"
+"from"
 "root"
 "parent"
 "this"
