@@ -22,6 +22,17 @@ module.exports = grammar({
         $.struct_definition,
         $.component_definition,
         $.import_statement,
+        $.export_statement,
+        $.global_definition,
+      ),
+
+    global_definition: ($) =>
+      seq(
+        optional($.visibility_modifier),
+        "global",
+        $.var_identifier,
+        ":=",
+        $.component_field_declaration_list,
       ),
 
     import_statement: ($) =>
@@ -33,6 +44,14 @@ module.exports = grammar({
         "from",
         $.string,
         ";",
+      ),
+
+    export_statement: ($) =>
+      seq(
+        "export",
+        "{",
+        commaSep($._type_identifier),
+        "}",
       ),
 
     struct_definition: ($) =>
@@ -81,8 +100,53 @@ module.exports = grammar({
           $.callback_event,
           $.callback_call,
           $.var_identifier,
+          $.states_definition,
+          $.transitions_definition,
         )),
         "}",
+      ),
+
+    transitions_definition: ($) =>
+      seq(
+        "transitions",
+        $.transitions_list_definition,
+      ),
+    transitions_list_definition: ($) =>
+      seq(
+        "[",
+        repeat(
+          seq(
+            choice(
+              "in",
+              "out",
+            ),
+            $.var_identifier,
+            ":",
+            $.component_field_declaration_list,
+          ),
+        ),
+        "]",
+      ),
+
+    states_definition: ($) =>
+      seq(
+        "states",
+        $.states_list_definition,
+      ),
+
+    states_list_definition: ($) =>
+      seq(
+        "[",
+        repeat(
+          seq(
+            $.var_identifier,
+            "when",
+            $._expression,
+            ":",
+            $.component_field_declaration_list,
+          ),
+        ),
+        "]",
       ),
 
     animate_statement: ($) =>
@@ -107,7 +171,7 @@ module.exports = grammar({
 
     callback_event: ($) =>
       seq(
-        $.var_identifier,
+        $.function_identifier,
         "=>",
         $.component_field_declaration_list,
       ),
@@ -119,9 +183,19 @@ module.exports = grammar({
 
     if_statement_definition: ($) =>
       seq(
-        "if",
-        $.expression_body_paren,
-        $.component_field_declaration_list,
+        choice(
+          "if",
+          "else if",
+          "else",
+        ),
+        optional($._expression),
+        choice(
+          $.component_field_declaration_list,
+          seq(
+            ":",
+            $.component_definition,
+          ),
+        ),
       ),
 
     for_loop_definition: ($) =>
@@ -132,8 +206,9 @@ module.exports = grammar({
         "in",
         $.var_identifier,
         ":",
-        $._type_identifier,
-        $.component_field_declaration_list,
+        $.component_definition,
+        // $._type_identifier,
+        // $.component_field_declaration_list,
       ),
 
     for_loop_index: ($) =>
@@ -201,25 +276,31 @@ module.exports = grammar({
     variable_set_equal: ($) =>
       seq(
         field("prev_name", $.var_identifier),
-        "=",
+        choice(
+          "=",
+          "+=",
+          "-=",
+          "*=",
+          "/=",
+        ),
         $._expression,
         ";",
       ),
 
     _expression: ($) =>
       choice(
-        $.expression_body,
+        $._expression_body,
         $.expression_body_paren,
       ),
 
     expression_body_paren: ($) =>
       seq(
         "(",
-        $.expression_body,
+        $._expression_body,
         ")",
       ),
 
-    expression_body: ($) =>
+    _expression_body: ($) =>
       seq(
         choice(
           $.value,
@@ -392,9 +473,12 @@ module.exports = grammar({
       choice(
         $._identifier,
         $.reference_identifier,
+        $.children_identifier,
+        field("match_all", "*"),
         seq($._identifier, repeat(seq(".", $.post_identifier))),
         seq($.reference_identifier, repeat(seq(".", $.post_identifier))),
       ),
+    children_identifier: ($) => seq("@", "children"),
 
     function_identifier: ($) =>
       seq(

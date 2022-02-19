@@ -35,7 +35,15 @@
 "for"
 "in"
 "if"
+"else if"
+"else"
 "animate"
+"states"
+"when"
+"in"
+"out"
+"transitions"
+"global"
 ] @keyword
 
 [
