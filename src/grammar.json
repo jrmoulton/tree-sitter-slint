@@ -1798,6 +1798,10 @@
         },
         {
           "type": "STRING",
+          "value": "ease-in"
+        },
+        {
+          "type": "STRING",
           "value": "ease_in"
         },
         {
@@ -1806,7 +1810,15 @@
         },
         {
           "type": "STRING",
+          "value": "ease-in-out"
+        },
+        {
+          "type": "STRING",
           "value": "ease_out"
+        },
+        {
+          "type": "STRING",
+          "value": "ease-out"
         },
         {
           "type": "STRING",
@@ -1895,6 +1907,10 @@
           {
             "type": "STRING",
             "value": "physical-length"
+          },
+          {
+            "type": "STRING",
+            "value": "physical_length"
           },
           {
             "type": "STRING",

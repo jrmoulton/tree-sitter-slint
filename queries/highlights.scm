@@ -52,8 +52,11 @@
  "blue"
  "ease"
  "ease_in"
+ "ease-in"
  "ease_in_out"
+ "ease-in-out"
  "ease_out"
+ "ease-out"
  "end"
  "green"
  "red"
@@ -95,5 +98,6 @@
 "length"
 "percent"
 "physical-length"
+"physical_length"
 "string"
 ] @type.builtin

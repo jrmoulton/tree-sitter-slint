@@ -1614,6 +1614,18 @@
     "named": false
   },
   {
+    "type": "ease-in",
+    "named": false
+  },
+  {
+    "type": "ease-in-out",
+    "named": false
+  },
+  {
+    "type": "ease-out",
+    "named": false
+  },
+  {
     "type": "ease_in",
     "named": false
   },
@@ -1723,6 +1735,10 @@
   },
   {
     "type": "physical-length",
+    "named": false
+  },
+  {
+    "type": "physical_length",
     "named": false
   },
   {
