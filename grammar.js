@@ -112,7 +112,7 @@ module.exports = grammar({
               "in",
               "out",
             ),
-            alias($.var_identifier, $.state_identifier),
+            $.var_identifier,
             ":",
             $.field_declaration_list,
           ),
@@ -194,20 +194,12 @@ module.exports = grammar({
       seq(
         "for",
         $.var_identifier,
-        optional($.for_loop_index),
         "in",
         $.var_identifier,
         ":",
         $.component_definition,
         // $._type_identifier,
         // $.field_declaration_list,
-      ),
-
-    for_loop_index: ($) =>
-      seq(
-        "[",
-        $.var_identifier,
-        "]",
       ),
 
     property_definition: ($) =>
@@ -321,6 +313,17 @@ module.exports = grammar({
         choice(
           $.mult_binary_expression,
           $.add_binary_expression,
+          $.comparison_binary_expression,
+        ),
+      ),
+
+    comparison_binary_expression: ($) =>
+      prec.left(
+        0,
+        seq(
+          $._expression,
+          $.comparison_operator,
+          $._expression,
         ),
       ),
 
@@ -351,9 +354,10 @@ module.exports = grammar({
         1,
         choice(
           seq($._expression, "+", $._expression),
-          seq($._expression, "-", $._expression),
+          seq($._expression, $.subtraction_operator, $._expression),
         ),
       ),
+    subtraction_operator: ($) => "-",
 
     callback_definition: ($) =>
       seq(
@@ -388,6 +392,14 @@ module.exports = grammar({
         "-",
         "*",
         "/",
+      ),
+
+    comparison_operator: ($) =>
+      choice(
+        ">",
+        "<",
+        ">=",
+        "<=",
       ),
 
     // This is taken from tree-sitter-javascript
@@ -448,7 +460,7 @@ module.exports = grammar({
 
     visibility_modifier: ($) => "export",
 
-    _identifier: ($) => /[a-zA-Z_-]+/,
+    _identifier: ($) => /([a-zA-Z_]+-?)+/,
     prefix_identifier: ($) => $._identifier,
     post_identifier: ($) =>
       choice(
@@ -462,15 +474,26 @@ module.exports = grammar({
         $.builtin_type_identifier,
       ),
     var_identifier: ($) =>
-      choice(
-        $._identifier,
-        $.reference_identifier,
-        $.children_identifier,
-        field("match_all", "*"),
-        seq($._identifier, repeat(seq(".", $.post_identifier))),
-        seq($.reference_identifier, repeat(seq(".", $.post_identifier))),
+      seq(
+        choice(
+          $._identifier,
+          $.reference_identifier,
+          $.children_identifier,
+          field("match_all", "*"),
+          seq($._identifier, repeat(seq(".", $.post_identifier))),
+          seq($.reference_identifier, repeat(seq(".", $.post_identifier))),
+        ),
+        optional($.index_operator),
       ),
+
     children_identifier: ($) => seq("@", "children"),
+
+    index_operator: ($) =>
+      seq(
+        "[",
+        $._expression,
+        "]",
+      ),
 
     function_identifier: ($) =>
       seq(

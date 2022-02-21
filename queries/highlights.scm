@@ -5,20 +5,13 @@
 
 (state_identifier) @field
 
-; (variable_definition name: (var_identifier) @field)
-
 (var_identifier
   (post_identifier) @variable)
-
-; (reference_identifier
-;   (post_identifier) @variable)
 
 (function_identifier) @function
 
 (reference_identifier) @keyword
 (visibility_modifier) @keyword
-
-; (scoped_identifier) @variable
 
 (comment) @comment
 
@@ -103,3 +96,5 @@
 "physical_length"
 "string"
 ] @type.builtin
+
+(subtraction_operator) @operator
