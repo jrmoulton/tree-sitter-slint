@@ -411,6 +411,21 @@
     "named": true,
     "fields": {},
     "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "field_declaration_list_body",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "field_declaration_list_body",
+    "named": true,
+    "fields": {},
+    "children": {
       "multiple": true,
       "required": false,
       "types": [
@@ -753,6 +768,21 @@
   },
   {
     "type": "list_definition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "list_definition_body",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "list_definition_body",
     "named": true,
     "fields": {},
     "children": {
@@ -1199,6 +1229,21 @@
   },
   {
     "type": "struct_field_declaration_list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "struct_field_declaration_list_body",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "struct_field_declaration_list_body",
     "named": true,
     "fields": {
       "name": {

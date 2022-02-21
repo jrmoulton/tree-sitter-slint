@@ -4,7 +4,11 @@
 ; (component_definition)
 ; ] @indent
 
-(field_declaration_list) @indent
+[
+(field_declaration_list_body) 
+(list_definition_body) 
+(struct_field_declaration_list_body)
+] @indent
 
 ; [
 ;   "{"
@@ -16,7 +20,7 @@
 ;   "else"
 ; ] @branch
 
-"{" @indent
+; "{" @indent
 "}" @indent_end
 
 (comment) @auto

@@ -58,6 +58,12 @@ module.exports = grammar({
 
     struct_field_declaration_list: ($) =>
       seq(
+        $.struct_field_declaration_list_body,
+        "}",
+      ),
+
+    struct_field_declaration_list_body: ($) =>
+      seq(
         "{",
         repeat(seq(
           field("name", $.var_identifier),
@@ -65,7 +71,6 @@ module.exports = grammar({
           $._expression,
           optional(","),
         )),
-        "}",
       ),
 
     component_definition: ($) =>
@@ -78,6 +83,12 @@ module.exports = grammar({
       ),
 
     field_declaration_list: ($) =>
+      seq(
+        $.field_declaration_list_body,
+        "}",
+      ),
+
+    field_declaration_list_body: ($) =>
       seq(
         "{",
         repeat(choice(
@@ -95,7 +106,6 @@ module.exports = grammar({
           $.states_definition,
           $.transitions_definition,
         )),
-        "}",
       ),
 
     transitions_definition: ($) =>
@@ -182,7 +192,9 @@ module.exports = grammar({
         ),
         optional($._expression),
         choice(
-          $.field_declaration_list,
+          seq(
+            $.field_declaration_list,
+          ),
           seq(
             ":",
             $.component_definition,
@@ -198,8 +210,6 @@ module.exports = grammar({
         $.var_identifier,
         ":",
         $.component_definition,
-        // $._type_identifier,
-        // $.field_declaration_list,
       ),
 
     property_definition: ($) =>
@@ -239,6 +249,12 @@ module.exports = grammar({
 
     list_definition: ($) =>
       seq(
+        $.list_definition_body,
+        "]",
+      ),
+
+    list_definition_body: ($) =>
+      seq(
         "[",
         repeat(
           seq(
@@ -246,7 +262,6 @@ module.exports = grammar({
             optional(","),
           ),
         ),
-        "]",
       ),
 
     variable_definition: ($) =>
