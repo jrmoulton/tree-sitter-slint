@@ -76,8 +76,12 @@ module.exports = grammar({
     component_definition: ($) =>
       seq(
         optional($.visibility_modifier),
-        optional(field("name", $._type_identifier)),
-        optional(":="),
+        optional(
+          seq(
+            field("name", $.var_identifier),
+            ":=",
+          ),
+        ),
         field("super_type", $._type_identifier),
         $.field_declaration_list,
       ),
