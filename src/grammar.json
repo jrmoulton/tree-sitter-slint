@@ -315,7 +315,7 @@
                   "name": "name",
                   "content": {
                     "type": "SYMBOL",
-                    "name": "var_identifier"
+                    "name": "_type_identifier"
                   }
                 },
                 {

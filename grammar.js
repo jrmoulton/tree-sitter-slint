@@ -78,7 +78,7 @@ module.exports = grammar({
         optional($.visibility_modifier),
         optional(
           seq(
-            field("name", $.var_identifier),
+            field("name", $._type_identifier),
             ":=",
           ),
         ),

@@ -297,7 +297,11 @@
         "required": false,
         "types": [
           {
-            "type": "var_identifier",
+            "type": "builtin_type_identifier",
+            "named": true
+          },
+          {
+            "type": "user_type_identifier",
             "named": true
           }
         ]
