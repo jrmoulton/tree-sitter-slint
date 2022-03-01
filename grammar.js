@@ -30,10 +30,12 @@ module.exports = grammar({
     import_statement: ($) =>
       seq(
         "import",
-        "{",
-        commaSep($._type_identifier),
-        "}",
-        "from",
+        optional(seq(
+          "{",
+          commaSep($._type_identifier),
+          "}",
+          "from",
+        )),
         $.string,
         ";",
       ),
@@ -387,7 +389,7 @@ module.exports = grammar({
       ),
     formal_parameter: ($) => $._expression,
 
-    operator: ($) =>
+    operators: ($) =>
       choice(
         $.comparison_operator,
         $.mult_prec_operator,
