@@ -1,0 +1,101 @@
+
+global Palette := {
+    property<color> primary: blue;
+    property<color> secondary: green;
+}
+
+BoxWithLabel := GridLayout {
+    Row {
+        Text { text: "label text here"; }
+    }
+    Row {
+        @children
+    }
+}
+
+MemoryTile := Rectangle {
+    border-radius: 8px;
+    callback clicked;
+    property <bool> open-curtain;
+    property <bool> solved;
+    property <image> icon;
+
+    background: solved ? #70ff00 : #858585;
+    animate background { duration: 800ms; }
+
+    clicked => {
+        if (condition) {
+            foo = 42;
+        } else if (other-condition) {
+            bar = 28;
+        } else {
+            foo = 4;
+        }
+    }
+    // Left curtain
+    Rectangle {
+        background: #0025ff;
+        border-radius: 4px;
+        width: open-curtain ? 0px : parent.width / 2 + 4px;
+        height: parent.height;
+        animate width { duration: 250ms; easing: ease-in; }
+        clip: true;
+
+        Image {
+            width: root.width - 32px;
+            height: root.height - 32px;
+            x: 16px;
+            y: 16px;
+            source: @image-url("icons/tile_logo.png");
+        }
+    }
+
+    states [
+        disabled when !is-enabled : {
+            color: gray; // same as root.color: gray;
+            text.color: white;
+        }
+        down when pressed : {
+            background: blue;
+        }
+    ]
+
+    transitions [
+        in down : {
+            animate color { duration: 300ms; }
+        }
+        out disabled : {
+            animate * { duration: 800ms; }
+        }
+    ]
+
+    VerticalLayout {
+        for data in root.model: my-repeated-text := Text {
+            color: data.col;
+            text: data.foo;
+        }
+    }
+
+    if true : foo := Rectangle { background: blue; }
+    if false : Rectangle { background: red; }
+    clicked => {
+        if (!root.disable-tiles) {
+            tile.image-visible = !tile.image-visible;
+            root.check-if-pair-solved();
+        }
+    }
+
+    TouchArea {
+        width: 100%;
+        height: 100%;
+        clicked => {
+            root.clicked();
+        }
+        clicked => { root.some-callback(); }
+    }
+}
+
+
+
+
+

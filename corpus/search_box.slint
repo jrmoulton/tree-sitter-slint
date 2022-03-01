@@ -1,0 +1,27 @@
+
+import { Icon } from "icon.slint";
+
+// When the search box gets an `edited` callback the first time the code needs to clear the box
+// https://github.com/slintslint/blob/master/docs/builtin_elements.md
+SearchBox := Rectangle { 
+	height: 25px;
+	border-radius: 5px;
+	background: #37323E;
+	
+		Icon { 
+			x: 5px;
+			y: parent.height / 2 - height / 2;
+			scale: 65%;
+			icon-source: @image-url("deps/jmui/iconses/100/search.svg"); 
+			element-color: #E1E1E2;
+		}
+		TextInput { 
+			x: 25px;
+			text: "Search";  
+			vertical-alignment: center;
+			color: #68656D;
+			TouchArea {
+				mouse-cursor: text;
+			}
+		}
+}

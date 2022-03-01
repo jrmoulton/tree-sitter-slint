@@ -12,6 +12,10 @@
           "named": true
         },
         {
+          "type": "add_prec_operator",
+          "named": true
+        },
+        {
           "type": "builtin_type_identifier",
           "named": true
         },
@@ -36,10 +40,6 @@
           "named": true
         },
         {
-          "type": "subtraction_operator",
-          "named": true
-        },
-        {
           "type": "ternary_expression",
           "named": true
         },
@@ -57,6 +57,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "add_prec_operator",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "animate_declaration_list",
@@ -131,6 +136,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "assignment_prec_operator",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "builtin_type_identifier",
@@ -829,6 +839,10 @@
           "named": true
         },
         {
+          "type": "mult_prec_operator",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         },
@@ -850,6 +864,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "mult_prec_operator",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "number",
@@ -1309,11 +1328,6 @@
     }
   },
   {
-    "type": "subtraction_operator",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "ternary_expression",
     "named": true,
     "fields": {},
@@ -1407,7 +1421,7 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
@@ -1447,6 +1461,10 @@
           "named": true
         },
         {
+          "type": "unary_prec_operator",
+          "named": true
+        },
+        {
           "type": "value",
           "named": true
         },
@@ -1456,6 +1474,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "unary_prec_operator",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "unit_type",
@@ -1633,11 +1656,15 @@
       }
     },
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
           "type": "add_binary_expression",
+          "named": true
+        },
+        {
+          "type": "assignment_prec_operator",
           "named": true
         },
         {

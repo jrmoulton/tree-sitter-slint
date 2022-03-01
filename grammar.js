@@ -279,13 +279,7 @@ module.exports = grammar({
     variable_set_equal: ($) =>
       seq(
         field("prev_name", $.var_identifier),
-        choice(
-          "=",
-          "+=",
-          "-=",
-          "*=",
-          "/=",
-        ),
+        $.assignment_prec_operator,
         $._expression,
         ";",
       ),
@@ -320,10 +314,7 @@ module.exports = grammar({
     unary_expression: ($) =>
       prec.left(
         2,
-        choice(
-          seq("-", $._expression),
-          seq("!", $._expression),
-        ),
+        seq($.unary_prec_operator, $._expression),
       ),
 
     _binary_expression: ($) =>
@@ -349,12 +340,7 @@ module.exports = grammar({
     mult_binary_expression: ($) =>
       prec.left(
         2,
-        choice(
-          seq($._expression, "*", $._expression),
-          seq($._expression, "&&", $._expression),
-          seq($._expression, "||", $._expression),
-          seq($._expression, "/", $._expression),
-        ),
+        seq($._expression, $.mult_prec_operator, $._expression),
       ),
     ternary_expression: ($) =>
       prec.left(
@@ -371,12 +357,8 @@ module.exports = grammar({
     add_binary_expression: ($) =>
       prec.left(
         1,
-        choice(
-          seq($._expression, "+", $._expression),
-          seq($._expression, $.subtraction_operator, $._expression),
-        ),
+        seq($._expression, $.add_prec_operator, $._expression),
       ),
-    subtraction_operator: ($) => "-",
 
     callback_definition: ($) =>
       seq(
@@ -407,18 +389,49 @@ module.exports = grammar({
 
     operator: ($) =>
       choice(
-        "+",
-        "-",
-        "*",
-        "/",
+        $.comparison_operator,
+        $.mult_prec_operator,
+        $.add_prec_operator,
+        $.unary_prec_operator,
+        $.assignment_prec_operator,
       ),
 
+    unary_prec_operator: ($) =>
+      choice(
+        "!",
+        "-",
+      ),
+
+    add_prec_operator: ($) =>
+      choice(
+        "+",
+        "-",
+      ),
+    mult_prec_operator: ($) =>
+      choice(
+        "*",
+        "/",
+        "&&",
+        "||",
+      ),
     comparison_operator: ($) =>
       choice(
         ">",
         "<",
         ">=",
         "<=",
+      ),
+    assignment_prec_operator: ($) =>
+      prec.left(
+        1,
+        choice(
+          "=",
+          ":",
+          "+=",
+          "-=",
+          "*=",
+          "/=",
+        ),
       ),
 
     // This is taken from tree-sitter-javascript

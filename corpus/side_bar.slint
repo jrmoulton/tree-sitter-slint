@@ -1,0 +1,21 @@
+
+import { ScrollView } from "std-widgets.slint";	
+import { SearchBox } from "search_box.slint";
+import { ListenSection } from "listen_section.slint";
+
+SideBar := Rectangle {
+	width: 185px;
+	preferred-height: 200px;
+
+	ScrollView {
+		VerticalLayout {
+		spacing: 10px;
+
+			SearchBox {
+				// This needs to be enabled to get the search box to the correct scale
+				// width: parent.width - 20px;
+			}
+			ListenSection {  }
+		}
+	}
+}
