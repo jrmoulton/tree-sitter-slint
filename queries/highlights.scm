@@ -97,4 +97,4 @@
 "string"
 ] @type.builtin
 
-(subtraction_operator) @operator
+; (subtraction_operator) @operator

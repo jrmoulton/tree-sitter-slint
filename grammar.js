@@ -556,8 +556,9 @@ module.exports = grammar({
       seq(
         "#",
         choice(
-          /[\da-zA-Z]{3}/,
-          /[\da-zA-Z]{6}/,
+          /[\da-fA-F]{3}/,
+          /[\da-fA-F]{6}/,
+          /[\da-fA-F]{8}/,
         ),
       ),
 
