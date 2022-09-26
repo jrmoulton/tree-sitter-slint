@@ -64,9 +64,9 @@ Once all tests are passing this list can be removed.
   - [x] Chained ternary Expression
   - [ ] Arrays as expressions
   - [x] String expression
-  - [ ] Color expression
+  - [x] Color expression
   - [ ] Brush expression
-  - [ ] Function expression
+  - [x] Function expression
   - [x] Image expression
   - [x] Empty expression
   - [ ] Empty expression with semi-colon

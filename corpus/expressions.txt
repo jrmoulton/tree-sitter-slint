@@ -121,6 +121,8 @@ Example := Window {
 
 --------------------------------------------------------------------------------
 
+)))
+
 ================================================================================
 String expression
 ================================================================================
@@ -153,6 +155,19 @@ Example := Window {
 
 --------------------------------------------------------------------------------
 
+(source_file
+  (component_definition
+    (user_type_identifier)
+    (user_type_identifier)
+    (field_declaration_list
+      (field_declaration_list_body
+        (property_definition
+          (user_type_identifier)
+          (var_identifier)
+          (property_expr
+            (value
+              (color))))))))
+
 ================================================================================
 Brush expression
 ================================================================================
@@ -163,6 +178,19 @@ Example := Window {
 
 --------------------------------------------------------------------------------
 
+(source_file
+  (component_definition
+    (user_type_identifier)
+    (user_type_identifier)
+    (field_declaration_list
+      (field_declaration_list_body
+        (property_definition
+          (builtin_type_identifier)
+          (var_identifier)
+          (property_expr
+            (var_identifier
+              (post_identifier))))))))
+
 ================================================================================
 Function expression
 ================================================================================
@@ -172,6 +200,25 @@ Example := Window {
 }
 
 --------------------------------------------------------------------------------
+
+(source_file
+  (component_definition
+    (user_type_identifier)
+    (user_type_identifier)
+    (field_declaration_list
+      (field_declaration_list_body
+        (property_definition
+          (builtin_type_identifier)
+          (var_identifier)
+          (property_expr
+            (function_call
+              (function_identifier)
+              (call_signature
+                (formal_parameters
+                  (formal_parameter
+                    (value
+                      (number
+                        (int_number)))))))))))))
 
 ================================================================================
 Image expression
@@ -230,3 +277,5 @@ Example := Window {
 }
 
 --------------------------------------------------------------------------------
+
+)))
