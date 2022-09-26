@@ -186,6 +186,8 @@ module.exports = grammar({
     callback_call: ($) =>
       seq(
         $.var_identifier,
+        "<=>",
+        $.var_identifier,
         ";",
       ),
 
@@ -221,9 +223,13 @@ module.exports = grammar({
     property_definition: ($) =>
       seq(
         "property",
-        "<",
-        $._propterty_kind,
-        ">",
+        optional(
+          seq(
+            "<",
+            $._propterty_kind,
+            ">"
+          )
+        ),
         field("name", $.var_identifier),
         optional($.property_expr),
         ";",
@@ -231,6 +237,7 @@ module.exports = grammar({
     property_expr: ($) =>
       seq(
         choice(
+          "<=>",
           "=",
           ":",
         ),
@@ -494,7 +501,7 @@ module.exports = grammar({
 
     visibility_modifier: ($) => "export",
 
-    _identifier: ($) => /([a-zA-Z_]+-?)+/,
+    _identifier: ($) => /[a-zA-Z_]([a-zA-Z_0-9-]?)+/,
     prefix_identifier: ($) => $._identifier,
     post_identifier: ($) =>
       choice(
