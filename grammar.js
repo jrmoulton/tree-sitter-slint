@@ -93,7 +93,6 @@ module.exports = grammar({
         $.field_declaration_list_body,
         "}",
       ),
-
     field_declaration_list_body: ($) =>
       seq(
         "{",
@@ -180,6 +179,17 @@ module.exports = grammar({
     callback_event: ($) =>
       seq(
         $.function_identifier,
+        optional(seq(
+          "(",
+          repeat(
+            seq(
+              $.callback_input,
+              ","
+            ),
+          ),
+          optional($.callback_input),
+          ")",
+        )),
         "=>",
         $.field_declaration_list,
       ),
@@ -502,6 +512,7 @@ module.exports = grammar({
     visibility_modifier: ($) => "export",
 
     _identifier: ($) => /[a-zA-Z_]([a-zA-Z_0-9-]?)+/,
+    callback_input: $ => $._identifier,
     prefix_identifier: ($) => $._identifier,
     post_identifier: ($) =>
       choice(
@@ -585,6 +596,7 @@ module.exports = grammar({
     unit_type: ($) =>
       choice(
         "px",
+        "deg",
         "%",
         "ms",
       ),
