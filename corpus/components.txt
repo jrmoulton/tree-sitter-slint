@@ -113,6 +113,19 @@ Example := Window {
 
 --------------------------------------------------------------------------------
 
+(source_file
+  (component_definition
+    (user_type_identifier)
+    (user_type_identifier)
+    (field_declaration_list
+      (field_declaration_list_body
+        (property_definition
+          (builtin_type_identifier)
+          (var_identifier)
+          (property_expr
+            (var_identifier
+              (post_identifier))))))))
+
 ================================================================================
 Relative values
 ================================================================================
