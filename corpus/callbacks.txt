@@ -21,7 +21,7 @@ Example := Window {
           (call_back_handler
             (function_identifier)
             (handler_body
-              (assign_statement
+              (comp_assign_expression
                 (identifier)
                 (int_literal)))))))))
 
@@ -107,8 +107,8 @@ Example := Rectangle {
           (identifier)
           (identifier))
         (handler_body
-          (identifier)
-          (ERROR
+          (binary_expression
+            (identifier)
             (identifier)))))))
 
 ================================================================================
@@ -128,6 +128,6 @@ Example := Rectangle {
     (comp_body
       (call_back_definition
         (function_identifier)
-        (scoped_identifiers
-          (type_identifier)
+        (field_expression
+          (identifier)
           (identifier))))))

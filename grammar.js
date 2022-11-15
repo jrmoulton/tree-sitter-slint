@@ -109,7 +109,7 @@ module.exports = grammar({
         optional(
           choice(
             seq("->", field("return_type", $.identifier)),
-            seq("<=>", field("alias", $._scoped_identifier)),
+            seq("<=>", field("alias", $.field_expression)),
           ),
         ),
         ";",
@@ -128,26 +128,12 @@ module.exports = grammar({
     handler_body: ($) =>
       seq(
         "{",
-        optional(choice($._expression, $._statement)),
+        optional($._expression),
         optional(";"),
         "}",
       ),
 
-    _statement: ($) => $.assign_statement,
-
-    assign_statement: ($) =>
-      prec.left(
-        PREC.assign,
-        seq(
-          $._scoped_identifier,
-          optional(choice("+", "-", "*", "/")),
-          "=",
-          $._expression,
-        ),
-      ),
-
-    two_way_property: ($) =>
-      seq($._define_property, "<=>", $._scoped_identifier, ";"),
+    two_way_property: ($) => seq($._define_property, "<=>", $._expression, ";"),
 
     define_assign_property: ($) => seq($._define_property, $._assign_property),
 
@@ -173,29 +159,70 @@ module.exports = grammar({
         $.unary_expression,
         $.binary_expression,
         $.ternary_expression,
-        $.function_call,
-        $._scoped_identifier,
+        $.call_expression,
+        $.identifier,
+        $.assign_expression,
+        $.comp_assign_expression,
+        $.field_expression,
         $._literal,
       ),
 
-    function_call: ($) => seq($.identifier, $.function_call_args),
+    assign_expression: ($) =>
+      prec.left(
+        PREC.assign,
+        seq(
+          field("left", $._expression),
+          "=",
+          field("right", $._expression),
+        ),
+      ),
+
+    // TODO: Vet operators for what is actually included in slint
+    comp_assign_expression: ($) =>
+      prec.left(
+        PREC.assign,
+        seq(
+          field("left", $._expression),
+          field(
+            "operator",
+            choice(
+              "+=",
+              "-=",
+              "*=",
+              "/=",
+              "%=",
+              "&=",
+              "|=",
+              "^=",
+              "<<=",
+              ">>=",
+            ),
+          ),
+          field("right", $._expression),
+        ),
+      ),
+
+    call_expression: ($) =>
+      prec(
+        PREC.call,
+        seq(
+          field("function", $._expression),
+          field("arguments", $.function_call_args),
+        ),
+      ),
 
     function_call_args: ($) => seq("(", commaSep($._expression), ")"),
 
-    _scoped_identifier: ($) =>
-      choice(
-        $.identifier,
-        $.scoped_identifiers,
-      ),
-
-    scoped_identifiers: ($) =>
+    field_expression: ($) =>
       prec(
-        -1,
+        PREC.field,
         seq(
-          repeat1(
-            seq($._type_identifier, "."),
+          field("value", $._expression),
+          ".",
+          field(
+            "field",
+            $.identifier,
           ),
-          $.identifier,
         ),
       ),
 

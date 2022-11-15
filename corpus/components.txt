@@ -109,8 +109,8 @@ Example := Window {
       (two_way_property
         (type_identifier)
         (identifier)
-        (scoped_identifiers
-          (type_identifier)
+        (field_expression
+          (identifier)
           (identifier))))))
 
 ================================================================================
@@ -131,8 +131,8 @@ Example := Window {
       (assign_property
         (identifier)
         (binary_expression
-          (scoped_identifiers
-            (type_identifier)
+          (field_expression
+            (identifier)
             (identifier))
           (int_literal)
           (units))))))
@@ -201,8 +201,8 @@ Example := Window {
     (type_identifier)
     (comp_body
       (component_item
-        (scoped_identifiers
-          (type_identifier)
+        (field_expression
+          (identifier)
           (identifier))
         (type_identifier)
         (type_identifier)
@@ -229,8 +229,8 @@ Example := Window {
     (comp_body
       (component_item
         (unary_expression
-          (scoped_identifiers
-            (type_identifier)
+          (field_expression
+            (identifier)
             (identifier)))
         (type_identifier)
         (comp_body
@@ -238,3 +238,26 @@ Example := Window {
             (identifier)
             (identifier)))))))
 
+================================================================================
+Function as scoped ident
+================================================================================
+
+Example := Window {
+    property<float> x1: "5.0".to-float();
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (component_item
+    (type_identifier)
+    (type_identifier)
+    (comp_body
+      (define_assign_property
+        (type_identifier)
+        (identifier)
+        (call_expression
+          (field_expression
+            (string_literal)
+            (identifier))
+          (function_call_args))))))

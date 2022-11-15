@@ -26,8 +26,8 @@ Example := Rectangle {
             (units))))
       (assign_property
         (identifier)
-        (scoped_identifiers
-          (type_identifier)
+        (field_expression
+          (identifier)
           (identifier))))))
 
 ================================================================================
@@ -84,12 +84,12 @@ Example := Window {
             (ternary_expression
               (ternary_expression
                 (unary_expression
-                  (scoped_identifiers
-                    (type_identifier)
+                  (field_expression
+                    (identifier)
                     (identifier)))
                 (color_literal)
-                (scoped_identifiers
-                  (type_identifier)
+                (field_expression
+                  (identifier)
                   (identifier)))
               (color_literal)
               (color_literal))))))))
@@ -104,7 +104,7 @@ Example := Window {
 
 --------------------------------------------------------------------------------
 
-))))))))))))))))))))))))))))
+))))))))))))))))))))))))))))))))
 
 ================================================================================
 String expression
@@ -163,8 +163,8 @@ Example := Window {
       (define_assign_property
         (type_identifier)
         (identifier)
-        (scoped_identifiers
-          (type_identifier)
+        (field_expression
+          (identifier)
           (identifier))))))
 
 ================================================================================
@@ -185,7 +185,7 @@ Example := Window {
       (define_assign_property
         (type_identifier)
         (identifier)
-        (function_call
+        (call_expression
           (identifier)
           (function_call_args
             (int_literal)))))))
