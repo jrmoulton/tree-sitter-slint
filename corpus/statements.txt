@@ -8,9 +8,8 @@ import { Button } from "std-widgets.slint";
 
 (source_file
   (import_statement
-    (user_type_identifier)
-    (string
-      (string_fragment))))
+    (type_identifier)
+    (string_literal)))
 
 ================================================================================
 Global Singleton
@@ -23,16 +22,12 @@ global Palette := {
 --------------------------------------------------------------------------------
 
 (source_file
-  (global_definition
-    (var_identifier)
-    (field_declaration_list
-      (field_declaration_list_body
-        (property_definition
-          (user_type_identifier)
-          (var_identifier)
-          (property_expr
-            (value
-              (language_constant))))))))
+  (global_single
+    (type_identifier)
+    (define_assign_property
+      (type_identifier)
+      (identifier)
+      (identifier))))
 
 ================================================================================
 Export statement
@@ -44,7 +39,22 @@ export { MathLogic }
 
 (source_file
   (export_statement
-    (user_type_identifier)))
+    (vis)
+    (type_identifier)))
+
+================================================================================
+Export as  statement
+================================================================================
+
+export { Button as ColorButton }
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (export_statement
+    (vis)
+    (type_identifier)
+    (type_identifier)))
 
 ================================================================================
 More complicated conditional statement
@@ -118,6 +128,8 @@ Example := Window {
 
 --------------------------------------------------------------------------------
 
+))))))
+
 ================================================================================
 For-in statement with anonymous struct as property
 ================================================================================
@@ -136,6 +148,8 @@ Example := Window {
 }
 
 --------------------------------------------------------------------------------
+
+))))))
 
 ================================================================================
 Animation statement
@@ -175,6 +189,8 @@ Example := Window {
 }
 
 --------------------------------------------------------------------------------
+
+))))))
 
 ================================================================================
 State statement
