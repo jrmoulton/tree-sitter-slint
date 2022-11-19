@@ -69,8 +69,9 @@ MyApp := Window {
     (comp_body
       (assign_property
         (identifier)
-        (int_literal)
-        (units)))))
+        (num_units
+          (int_literal)
+          (units))))))
 
 ================================================================================
 Property declaration
@@ -88,7 +89,8 @@ Example := Rectangle {
     (type_identifier)
     (comp_body
       (define_property
-        (type_identifier)
+        (type_identifier
+          (type_builtin))
         (identifier)))))
 
 ================================================================================
@@ -107,7 +109,8 @@ Example := Window {
     (type_identifier)
     (comp_body
       (two_way_property
-        (type_identifier)
+        (type_identifier
+          (type_builtin))
         (identifier)
         (field_expression
           (identifier)
@@ -132,10 +135,12 @@ Example := Window {
         (identifier)
         (binary_expression
           (field_expression
-            (identifier)
+            (identifier
+              (variable_builtin))
             (identifier))
-          (int_literal)
-          (units))))))
+          (num_units
+            (int_literal)
+            (units)))))))
 
 ================================================================================
 Define and set a property
@@ -153,10 +158,12 @@ Example := Window {
     (type_identifier)
     (comp_body
       (define_assign_property
-        (type_identifier)
+        (type_identifier
+          (type_builtin))
         (identifier)
-        (int_literal)
-        (units)))))
+        (num_units
+          (int_literal)
+          (units))))))
 
 ================================================================================
 Named sub component
@@ -181,8 +188,9 @@ Example := Rectangle {
         (comp_body
           (assign_property
             (identifier)
-            (int_literal)
-            (units)))))))
+            (num_units
+              (int_literal)
+              (units))))))))
 
 ================================================================================
 Conditional named component
@@ -209,7 +217,8 @@ Example := Window {
         (comp_body
           (assign_property
             (identifier)
-            (identifier)))))))
+            (identifier
+              (constant_builtin))))))))
 
 ================================================================================
 Conditional unnamed component
@@ -236,7 +245,8 @@ Example := Window {
         (comp_body
           (assign_property
             (identifier)
-            (identifier)))))))
+            (identifier
+              (constant_builtin))))))))
 
 ================================================================================
 Function as scoped ident
@@ -254,7 +264,8 @@ Example := Window {
     (type_identifier)
     (comp_body
       (define_assign_property
-        (type_identifier)
+        (type_identifier
+          (type_builtin))
         (identifier)
         (call_expression
           (field_expression

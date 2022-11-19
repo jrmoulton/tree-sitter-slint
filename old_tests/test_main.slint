@@ -8,6 +8,8 @@ export MainWindow := Window {
     property<length> tile-size: 80px;
     property<length> tile-spacing: 10px;
 
+    width: root.check-if-pair-solved();
+
     property <int> row-count: 4;
     property <int> column-count: 4;
 

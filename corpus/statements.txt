@@ -25,9 +25,11 @@ global Palette := {
   (global_single
     (type_identifier)
     (define_assign_property
-      (type_identifier)
+      (type_identifier
+        (type_builtin))
       (identifier)
-      (identifier))))
+      (identifier
+        (constant_builtin)))))
 
 ================================================================================
 Export statement
@@ -75,46 +77,29 @@ example := Rectangle {
 --------------------------------------------------------------------------------
 
 (source_file
-  (component_definition
-    (user_type_identifier)
-    (user_type_identifier)
-    (field_declaration_list
-      (field_declaration_list_body
-        (callback_event
-          (function_identifier)
-          (field_declaration_list
-            (field_declaration_list_body
-              (if_statement_definition
-                (expression_body_paren
-                  (var_identifier))
-                (field_declaration_list
-                  (field_declaration_list_body
-                    (variable_set_equal
-                      (var_identifier)
-                      (assignment_prec_operator)
-                      (value
-                        (number
-                          (int_number)))))))
-              (if_statement_definition
-                (expression_body_paren
-                  (var_identifier))
-                (field_declaration_list
-                  (field_declaration_list_body
-                    (variable_set_equal
-                      (var_identifier)
-                      (assignment_prec_operator)
-                      (value
-                        (number
-                          (int_number)))))))
-              (if_statement_definition
-                (field_declaration_list
-                  (field_declaration_list_body
-                    (variable_set_equal
-                      (var_identifier)
-                      (assignment_prec_operator)
-                      (value
-                        (number
-                          (int_number))))))))))))))
+  (component_item
+    (type_identifier)
+    (type_identifier)
+    (comp_body
+      (call_back_handler
+        (function_identifier)
+        (handler_body
+          (if_expression
+            (identifier)
+            (consequence_body
+              (assign_expression
+                (identifier)
+                (int_literal)))
+            (if_expression
+              (identifier)
+              (consequence_body
+                (assign_expression
+                  (identifier)
+                  (int_literal)))
+              (consequence_body
+                (assign_expression
+                  (identifier)
+                  (int_literal))))))))))
 
 ================================================================================
 For-in statement
@@ -128,10 +113,28 @@ Example := Window {
 
 --------------------------------------------------------------------------------
 
-))))))
+(source_file
+  (component_item
+    (type_identifier)
+    (type_identifier)
+    (comp_body
+      (for_loop
+        (index_expression
+          (identifier)
+          (identifier))
+        (array_literal
+          (color_literal)
+          (color_literal)
+          (color_literal))
+        (component_item
+          (type_identifier)
+          (comp_body
+            (assign_property
+              (identifier)
+              (identifier))))))))
 
 ================================================================================
-For-in statement with anonymous struct as property
+For-in anonymouse statement struct as property
 ================================================================================
 
 Example := Window {
@@ -149,7 +152,56 @@ Example := Window {
 
 --------------------------------------------------------------------------------
 
-))))))
+(source_file
+  (component_item
+    (type_identifier)
+    (type_identifier)
+    (comp_body
+      (define_assign_property
+        (array_literal
+          (struct_block_definition
+            (identifier)
+            (identifier
+              (type_builtin))
+            (identifier)
+            (identifier
+              (type_builtin))))
+        (identifier)
+        (array_literal
+          (struct_block_definition
+            (identifier)
+            (string_literal)
+            (identifier)
+            (color_literal))
+          (struct_block_definition
+            (identifier)
+            (string_literal)
+            (identifier)
+            (color_literal))))
+      (component_item
+        (type_identifier)
+        (comp_body
+          (for_loop
+            (identifier)
+            (field_expression
+              (identifier
+                (variable_builtin))
+              (identifier))
+            (component_item
+              (type_identifier)
+              (type_identifier)
+              (comp_body
+                (assign_property
+                  (identifier
+                    (type_builtin))
+                  (field_expression
+                    (identifier)
+                    (identifier)))
+                (assign_property
+                  (identifier)
+                  (field_expression
+                    (identifier)
+                    (identifier)))))))))))
 
 ================================================================================
 Animation statement
@@ -164,20 +216,18 @@ Example := Window {
 --------------------------------------------------------------------------------
 
 (source_file
-  (component_definition
-    (user_type_identifier)
-    (user_type_identifier)
-    (field_declaration_list
-      (field_declaration_list_body
-        (animate_statement
-          (var_identifier)
-          (animate_declaration_list
-            (builtin_type_identifier)
-            (value
-              (value_with_units
-                (number
-                  (int_number))
-                (unit_type)))))))))
+  (component_item
+    (type_identifier)
+    (type_identifier)
+    (comp_body
+      (animate_statement
+        (identifier)
+        (assign_property
+          (identifier
+            (variable_builtin))
+          (num_units
+            (int_literal)
+            (units)))))))
 
 ================================================================================
 Animate two variables together statement
@@ -190,7 +240,20 @@ Example := Window {
 
 --------------------------------------------------------------------------------
 
-))))))
+(source_file
+  (component_item
+    (type_identifier)
+    (type_identifier)
+    (comp_body
+      (animate_statement
+        (identifier)
+        (identifier)
+        (assign_property
+          (identifier
+            (variable_builtin))
+          (num_units
+            (int_literal)
+            (units)))))))
 
 ================================================================================
 State statement
@@ -211,32 +274,26 @@ Example := Window {
 --------------------------------------------------------------------------------
 
 (source_file
-  (component_definition
-    (user_type_identifier)
-    (user_type_identifier)
-    (field_declaration_list
-      (field_declaration_list_body
-        (states_definition
-          (states_list_definition
-            (state_identifier)
-            (unary_expression
-              (unary_prec_operator)
-              (var_identifier))
-            (field_declaration_list
-              (field_declaration_list_body
-                (variable_set_equal
-                  (var_identifier)
-                  (assignment_prec_operator)
-                  (var_identifier))))
-            (state_identifier)
-            (var_identifier)
-            (field_declaration_list
-              (field_declaration_list_body
-                (variable_set_equal
-                  (var_identifier)
-                  (assignment_prec_operator)
-                  (value
-                    (language_constant)))))))))))
+  (component_item
+    (type_identifier)
+    (type_identifier)
+    (comp_body
+      (state_statement
+        (state_expression
+          (identifier)
+          (unary_expression
+            (identifier)))
+        (assign_property
+          (identifier)
+          (identifier
+            (constant_builtin)))
+        (state_expression
+          (identifier)
+          (identifier))
+        (assign_property
+          (identifier)
+          (identifier
+            (constant_builtin)))))))
 
 ================================================================================
 Transition statement
@@ -257,34 +314,26 @@ Example := Window {
 --------------------------------------------------------------------------------
 
 (source_file
-  (component_definition
-    (user_type_identifier)
-    (user_type_identifier)
-    (field_declaration_list
-      (field_declaration_list_body
-        (transitions_definition
-          (transitions_list_definition
-            (var_identifier)
-            (field_declaration_list
-              (field_declaration_list_body
-                (animate_statement
-                  (var_identifier)
-                  (animate_declaration_list
-                    (builtin_type_identifier)
-                    (value
-                      (value_with_units
-                        (number
-                          (int_number))
-                        (unit_type)))))))
-            (var_identifier)
-            (field_declaration_list
-              (field_declaration_list_body
-                (animate_statement
-                  (var_identifier)
-                  (animate_declaration_list
-                    (builtin_type_identifier)
-                    (value
-                      (value_with_units
-                        (number
-                          (int_number))
-                        (unit_type)))))))))))))
+  (component_item
+    (type_identifier)
+    (type_identifier)
+    (comp_body
+      (transition_statement
+        (identifier)
+        (animate_statement
+          (identifier
+            (type_builtin))
+          (assign_property
+            (identifier
+              (variable_builtin))
+            (num_units
+              (int_literal)
+              (units))))
+        (identifier)
+        (animate_statement
+          (assign_property
+            (identifier
+              (variable_builtin))
+            (num_units
+              (int_literal)
+              (units))))))))

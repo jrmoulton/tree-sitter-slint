@@ -16,6 +16,7 @@ BoxWithLabel := GridLayout {
 MemoryTile := Rectangle {
     border-radius: 8px;
     callback clicked;
+    callback some-callback;
     property <bool> open-curtain;
     property <bool> solved;
     property <image> icon;
@@ -53,7 +54,7 @@ MemoryTile := Rectangle {
     states [
         disabled when !is-enabled : {
             color: gray; // same as root.color: gray;
-            text.color: white;
+            root.color: white;
         }
         down when pressed : {
             background: blue;
@@ -61,11 +62,11 @@ MemoryTile := Rectangle {
     ]
 
     transitions [
-        in down : {
-            animate color { duration: 300ms; }
-        }
         out disabled : {
             animate * { duration: 800ms; }
+        }
+        in down : {
+            animate color { duration: 300ms; }
         }
     ]
 

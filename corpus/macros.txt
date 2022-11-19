@@ -1,0 +1,84 @@
+================================================================================
+Image macro
+================================================================================
+
+Example := Window {
+    some_image: @image-url("https://slint-ui.com/logo/slint-logo-full-light.svg");
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (component_item
+    (type_identifier)
+    (type_identifier)
+    (comp_body
+      (assign_property
+        (identifier)
+        (image_macro
+          (string_literal))))))
+
+================================================================================
+Linear macro
+================================================================================
+
+Example := Window {
+    background: @linear-gradient(90deg, #3f87a6 0%, #ebf8e1 50%, #f69d3c 100%);
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (component_item
+    (type_identifier)
+    (type_identifier)
+    (comp_body
+      (assign_property
+        (identifier)
+        (linear_grad_macro
+          (num_units
+            (int_literal)
+            (units))
+          (color_literal)
+          (num_units
+            (int_literal)
+            (units))
+          (color_literal)
+          (num_units
+            (int_literal)
+            (units))
+          (color_literal)
+          (num_units
+            (int_literal)
+            (units)))))))
+
+================================================================================
+Radial macro
+================================================================================
+
+Example := Window {
+    background: @radial-gradient(circle, #f00 0%, #0f0 50%, #00f 100%);
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (component_item
+    (type_identifier)
+    (type_identifier)
+    (comp_body
+      (assign_property
+        (identifier)
+        (radial_grad_macro
+          (color_literal)
+          (num_units
+            (int_literal)
+            (units))
+          (color_literal)
+          (num_units
+            (int_literal)
+            (units))
+          (color_literal)
+          (num_units
+            (int_literal)
+            (units)))))))

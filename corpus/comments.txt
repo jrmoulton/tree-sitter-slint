@@ -30,3 +30,8 @@ A nested comment
 /* this is a /* single */ comment */
 
 --------------------------------------------------------------------------------
+
+(source_file
+  (comment)
+  (ERROR
+    (type_identifier)))

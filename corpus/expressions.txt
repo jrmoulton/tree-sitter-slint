@@ -22,8 +22,9 @@ Example := Rectangle {
         (comp_body
           (assign_property
             (identifier)
-            (int_literal)
-            (units))))
+            (num_units
+              (int_literal)
+              (units)))))
       (assign_property
         (identifier)
         (field_expression
@@ -104,7 +105,20 @@ Example := Window {
 
 --------------------------------------------------------------------------------
 
-))))))))))))))))))))))))))))))))
+(source_file
+  (component_item
+    (type_identifier)
+    (type_identifier)
+    (comp_body
+      (define_assign_property
+        (array_literal
+          (identifier
+            (type_builtin)))
+        (identifier)
+        (array_literal
+          (int_literal)
+          (int_literal)
+          (int_literal))))))
 
 ================================================================================
 String expression
@@ -141,7 +155,8 @@ Example := Window {
     (type_identifier)
     (comp_body
       (define_assign_property
-        (type_identifier)
+        (type_identifier
+          (type_builtin))
         (identifier)
         (color_literal)))))
 
@@ -161,11 +176,13 @@ Example := Window {
     (type_identifier)
     (comp_body
       (define_assign_property
-        (type_identifier)
+        (type_identifier
+          (type_builtin))
         (identifier)
         (field_expression
           (identifier)
-          (identifier))))))
+          (identifier
+            (constant_builtin)))))))
 
 ================================================================================
 Function expression
@@ -183,39 +200,13 @@ Example := Window {
     (type_identifier)
     (comp_body
       (define_assign_property
-        (type_identifier)
+        (type_identifier
+          (type_builtin))
         (identifier)
         (call_expression
           (identifier)
           (function_call_args
             (int_literal)))))))
-
-================================================================================
-Image expression
-================================================================================
-
-Example := Window {
-    some_image: @image-url("https://slint-ui.com/logo/slint-logo-full-light.svg");
-}
-
---------------------------------------------------------------------------------
-
-(source_file
-  (component_definition
-    (user_type_identifier)
-    (user_type_identifier)
-    (field_declaration_list
-      (field_declaration_list_body
-        (variable_set_equal
-          (var_identifier)
-          (assignment_prec_operator)
-          (function_call
-            (function_identifier)
-            (call_signature
-              (formal_parameters
-                (formal_parameter
-                  (string
-                    (string_fragment)))))))))))
 
 ================================================================================
 Empty expression block
@@ -286,3 +277,48 @@ Example := Rectangle {
           (binary_expression
             (int_literal)
             (int_literal)))))))
+
+================================================================================
+If condition expression
+================================================================================
+
+Example := Rectangle {
+    clicked => {
+        if (!root.disable-tiles) {
+            tile.image-visible = !tile.image-visible;
+            root.check-if-pair-solved();
+        }
+    }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (component_item
+    (type_identifier)
+    (type_identifier)
+    (comp_body
+      (call_back_handler
+        (function_identifier)
+        (handler_body
+          (if_expression
+            (unary_expression
+              (field_expression
+                (identifier
+                  (variable_builtin))
+                (identifier)))
+            (consequence_body
+              (assign_expression
+                (field_expression
+                  (identifier)
+                  (identifier))
+                (unary_expression
+                  (field_expression
+                    (identifier)
+                    (identifier))))
+              (call_expression
+                (field_expression
+                  (identifier
+                    (variable_builtin))
+                  (identifier))
+                (function_call_args)))))))))

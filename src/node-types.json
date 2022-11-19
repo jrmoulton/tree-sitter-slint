@@ -1,142 +1,135 @@
 [
   {
-    "type": "assign_expression",
-    "named": true,
-    "fields": {
-      "left": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": "assign_expression",
-            "named": true
-          },
-          {
-            "type": "binary_expression",
-            "named": true
-          },
-          {
-            "type": "bool_literal",
-            "named": true
-          },
-          {
-            "type": "call_expression",
-            "named": true
-          },
-          {
-            "type": "color_literal",
-            "named": true
-          },
-          {
-            "type": "comp_assign_expression",
-            "named": true
-          },
-          {
-            "type": "field_expression",
-            "named": true
-          },
-          {
-            "type": "float_literal",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "int_literal",
-            "named": true
-          },
-          {
-            "type": "string_literal",
-            "named": true
-          },
-          {
-            "type": "ternary_expression",
-            "named": true
-          },
-          {
-            "type": "unary_expression",
-            "named": true
-          },
-          {
-            "type": "units",
-            "named": true
-          }
-        ]
-      },
-      "right": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": "assign_expression",
-            "named": true
-          },
-          {
-            "type": "binary_expression",
-            "named": true
-          },
-          {
-            "type": "bool_literal",
-            "named": true
-          },
-          {
-            "type": "call_expression",
-            "named": true
-          },
-          {
-            "type": "color_literal",
-            "named": true
-          },
-          {
-            "type": "comp_assign_expression",
-            "named": true
-          },
-          {
-            "type": "field_expression",
-            "named": true
-          },
-          {
-            "type": "float_literal",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "int_literal",
-            "named": true
-          },
-          {
-            "type": "string_literal",
-            "named": true
-          },
-          {
-            "type": "ternary_expression",
-            "named": true
-          },
-          {
-            "type": "unary_expression",
-            "named": true
-          },
-          {
-            "type": "units",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "assign_property",
+    "type": "animate_statement",
     "named": true,
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
+        {
+          "type": "array_literal",
+          "named": true
+        },
+        {
+          "type": "assign_expression",
+          "named": true
+        },
+        {
+          "type": "assign_property",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "call_back_definition",
+          "named": true
+        },
+        {
+          "type": "call_back_handler",
+          "named": true
+        },
+        {
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "color_literal",
+          "named": true
+        },
+        {
+          "type": "comp_assign_expression",
+          "named": true
+        },
+        {
+          "type": "define_assign_property",
+          "named": true
+        },
+        {
+          "type": "define_property",
+          "named": true
+        },
+        {
+          "type": "field_expression",
+          "named": true
+        },
+        {
+          "type": "float_literal",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "if_expression",
+          "named": true
+        },
+        {
+          "type": "image_macro",
+          "named": true
+        },
+        {
+          "type": "index_expression",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "linear_grad_macro",
+          "named": true
+        },
+        {
+          "type": "num_units",
+          "named": true
+        },
+        {
+          "type": "radial_grad_macro",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "struct_block_definition",
+          "named": true
+        },
+        {
+          "type": "ternary_expression",
+          "named": true
+        },
+        {
+          "type": "two_way_property",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "array_literal",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "array_literal",
+          "named": true
+        },
         {
           "type": "assign_expression",
           "named": true
@@ -174,11 +167,39 @@
           "named": true
         },
         {
+          "type": "if_expression",
+          "named": true
+        },
+        {
+          "type": "image_macro",
+          "named": true
+        },
+        {
+          "type": "index_expression",
+          "named": true
+        },
+        {
           "type": "int_literal",
           "named": true
         },
         {
+          "type": "linear_grad_macro",
+          "named": true
+        },
+        {
+          "type": "num_units",
+          "named": true
+        },
+        {
+          "type": "radial_grad_macro",
+          "named": true
+        },
+        {
           "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "struct_block_definition",
           "named": true
         },
         {
@@ -188,22 +209,34 @@
         {
           "type": "unary_expression",
           "named": true
-        },
-        {
-          "type": "units",
-          "named": true
         }
       ]
     }
   },
   {
-    "type": "binary_expression",
+    "type": "assign_expression",
     "named": true,
     "fields": {
       "left": {
         "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "@",
+            "named": false
+          },
+          {
+            "type": "array_literal",
+            "named": true
+          },
           {
             "type": "assign_expression",
             "named": true
@@ -241,11 +274,39 @@
             "named": true
           },
           {
+            "type": "if_expression",
+            "named": true
+          },
+          {
+            "type": "image_macro",
+            "named": true
+          },
+          {
+            "type": "index_expression",
+            "named": true
+          },
+          {
             "type": "int_literal",
             "named": true
           },
           {
+            "type": "linear_grad_macro",
+            "named": true
+          },
+          {
+            "type": "num_units",
+            "named": true
+          },
+          {
+            "type": "radial_grad_macro",
+            "named": true
+          },
+          {
             "type": "string_literal",
+            "named": true
+          },
+          {
+            "type": "struct_block_definition",
             "named": true
           },
           {
@@ -255,9 +316,310 @@
           {
             "type": "unary_expression",
             "named": true
+          }
+        ]
+      },
+      "right": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "(",
+            "named": false
           },
           {
-            "type": "units",
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "@",
+            "named": false
+          },
+          {
+            "type": "array_literal",
+            "named": true
+          },
+          {
+            "type": "assign_expression",
+            "named": true
+          },
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "bool_literal",
+            "named": true
+          },
+          {
+            "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "color_literal",
+            "named": true
+          },
+          {
+            "type": "comp_assign_expression",
+            "named": true
+          },
+          {
+            "type": "field_expression",
+            "named": true
+          },
+          {
+            "type": "float_literal",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "if_expression",
+            "named": true
+          },
+          {
+            "type": "image_macro",
+            "named": true
+          },
+          {
+            "type": "index_expression",
+            "named": true
+          },
+          {
+            "type": "int_literal",
+            "named": true
+          },
+          {
+            "type": "linear_grad_macro",
+            "named": true
+          },
+          {
+            "type": "num_units",
+            "named": true
+          },
+          {
+            "type": "radial_grad_macro",
+            "named": true
+          },
+          {
+            "type": "string_literal",
+            "named": true
+          },
+          {
+            "type": "struct_block_definition",
+            "named": true
+          },
+          {
+            "type": "ternary_expression",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "assign_property",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "array_literal",
+          "named": true
+        },
+        {
+          "type": "assign_expression",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "color_literal",
+          "named": true
+        },
+        {
+          "type": "comp_assign_expression",
+          "named": true
+        },
+        {
+          "type": "field_expression",
+          "named": true
+        },
+        {
+          "type": "float_literal",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "if_expression",
+          "named": true
+        },
+        {
+          "type": "image_macro",
+          "named": true
+        },
+        {
+          "type": "index_expression",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "linear_grad_macro",
+          "named": true
+        },
+        {
+          "type": "num_units",
+          "named": true
+        },
+        {
+          "type": "radial_grad_macro",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "struct_block_definition",
+          "named": true
+        },
+        {
+          "type": "ternary_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "binary_expression",
+    "named": true,
+    "fields": {
+      "left": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "@",
+            "named": false
+          },
+          {
+            "type": "array_literal",
+            "named": true
+          },
+          {
+            "type": "assign_expression",
+            "named": true
+          },
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "bool_literal",
+            "named": true
+          },
+          {
+            "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "color_literal",
+            "named": true
+          },
+          {
+            "type": "comp_assign_expression",
+            "named": true
+          },
+          {
+            "type": "field_expression",
+            "named": true
+          },
+          {
+            "type": "float_literal",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "if_expression",
+            "named": true
+          },
+          {
+            "type": "image_macro",
+            "named": true
+          },
+          {
+            "type": "index_expression",
+            "named": true
+          },
+          {
+            "type": "int_literal",
+            "named": true
+          },
+          {
+            "type": "linear_grad_macro",
+            "named": true
+          },
+          {
+            "type": "num_units",
+            "named": true
+          },
+          {
+            "type": "radial_grad_macro",
+            "named": true
+          },
+          {
+            "type": "string_literal",
+            "named": true
+          },
+          {
+            "type": "struct_block_definition",
+            "named": true
+          },
+          {
+            "type": "ternary_expression",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
             "named": true
           }
         ]
@@ -341,6 +703,22 @@
         "required": true,
         "types": [
           {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "@",
+            "named": false
+          },
+          {
+            "type": "array_literal",
+            "named": true
+          },
+          {
             "type": "assign_expression",
             "named": true
           },
@@ -377,11 +755,39 @@
             "named": true
           },
           {
+            "type": "if_expression",
+            "named": true
+          },
+          {
+            "type": "image_macro",
+            "named": true
+          },
+          {
+            "type": "index_expression",
+            "named": true
+          },
+          {
             "type": "int_literal",
             "named": true
           },
           {
+            "type": "linear_grad_macro",
+            "named": true
+          },
+          {
+            "type": "num_units",
+            "named": true
+          },
+          {
+            "type": "radial_grad_macro",
+            "named": true
+          },
+          {
             "type": "string_literal",
+            "named": true
+          },
+          {
+            "type": "struct_block_definition",
             "named": true
           },
           {
@@ -390,10 +796,6 @@
           },
           {
             "type": "unary_expression",
-            "named": true
-          },
-          {
-            "type": "units",
             "named": true
           }
         ]
@@ -502,6 +904,22 @@
         "required": true,
         "types": [
           {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "@",
+            "named": false
+          },
+          {
+            "type": "array_literal",
+            "named": true
+          },
+          {
             "type": "assign_expression",
             "named": true
           },
@@ -538,11 +956,39 @@
             "named": true
           },
           {
+            "type": "if_expression",
+            "named": true
+          },
+          {
+            "type": "image_macro",
+            "named": true
+          },
+          {
+            "type": "index_expression",
+            "named": true
+          },
+          {
             "type": "int_literal",
             "named": true
           },
           {
+            "type": "linear_grad_macro",
+            "named": true
+          },
+          {
+            "type": "num_units",
+            "named": true
+          },
+          {
+            "type": "radial_grad_macro",
+            "named": true
+          },
+          {
             "type": "string_literal",
+            "named": true
+          },
+          {
+            "type": "struct_block_definition",
             "named": true
           },
           {
@@ -551,10 +997,6 @@
           },
           {
             "type": "unary_expression",
-            "named": true
-          },
-          {
-            "type": "units",
             "named": true
           }
         ]
@@ -575,6 +1017,22 @@
         "required": true,
         "types": [
           {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "@",
+            "named": false
+          },
+          {
+            "type": "array_literal",
+            "named": true
+          },
+          {
             "type": "assign_expression",
             "named": true
           },
@@ -611,11 +1069,39 @@
             "named": true
           },
           {
+            "type": "if_expression",
+            "named": true
+          },
+          {
+            "type": "image_macro",
+            "named": true
+          },
+          {
+            "type": "index_expression",
+            "named": true
+          },
+          {
             "type": "int_literal",
             "named": true
           },
           {
+            "type": "linear_grad_macro",
+            "named": true
+          },
+          {
+            "type": "num_units",
+            "named": true
+          },
+          {
+            "type": "radial_grad_macro",
+            "named": true
+          },
+          {
             "type": "string_literal",
+            "named": true
+          },
+          {
+            "type": "struct_block_definition",
             "named": true
           },
           {
@@ -624,10 +1110,6 @@
           },
           {
             "type": "unary_expression",
-            "named": true
-          },
-          {
-            "type": "units",
             "named": true
           }
         ]
@@ -683,6 +1165,22 @@
         "required": true,
         "types": [
           {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "@",
+            "named": false
+          },
+          {
+            "type": "array_literal",
+            "named": true
+          },
+          {
             "type": "assign_expression",
             "named": true
           },
@@ -719,11 +1217,39 @@
             "named": true
           },
           {
+            "type": "if_expression",
+            "named": true
+          },
+          {
+            "type": "image_macro",
+            "named": true
+          },
+          {
+            "type": "index_expression",
+            "named": true
+          },
+          {
             "type": "int_literal",
             "named": true
           },
           {
+            "type": "linear_grad_macro",
+            "named": true
+          },
+          {
+            "type": "num_units",
+            "named": true
+          },
+          {
+            "type": "radial_grad_macro",
+            "named": true
+          },
+          {
             "type": "string_literal",
+            "named": true
+          },
+          {
+            "type": "struct_block_definition",
             "named": true
           },
           {
@@ -732,10 +1258,6 @@
           },
           {
             "type": "unary_expression",
-            "named": true
-          },
-          {
-            "type": "units",
             "named": true
           }
         ]
@@ -751,6 +1273,10 @@
       "required": false,
       "types": [
         {
+          "type": "animate_statement",
+          "named": true
+        },
+        {
           "type": "assign_property",
           "named": true
         },
@@ -763,6 +1289,10 @@
           "named": true
         },
         {
+          "type": "children_macro",
+          "named": true
+        },
+        {
           "type": "component_item",
           "named": true
         },
@@ -772,6 +1302,18 @@
         },
         {
           "type": "define_property",
+          "named": true
+        },
+        {
+          "type": "for_loop",
+          "named": true
+        },
+        {
+          "type": "state_statement",
+          "named": true
+        },
+        {
+          "type": "transition_statement",
           "named": true
         },
         {
@@ -789,6 +1331,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "array_literal",
+          "named": true
+        },
         {
           "type": "assign_expression",
           "named": true
@@ -830,11 +1376,39 @@
           "named": true
         },
         {
+          "type": "if_expression",
+          "named": true
+        },
+        {
+          "type": "image_macro",
+          "named": true
+        },
+        {
+          "type": "index_expression",
+          "named": true
+        },
+        {
           "type": "int_literal",
           "named": true
         },
         {
+          "type": "linear_grad_macro",
+          "named": true
+        },
+        {
+          "type": "num_units",
+          "named": true
+        },
+        {
+          "type": "radial_grad_macro",
+          "named": true
+        },
+        {
           "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "struct_block_definition",
           "named": true
         },
         {
@@ -850,10 +1424,6 @@
           "named": true
         },
         {
-          "type": "units",
-          "named": true
-        },
-        {
           "type": "vis",
           "named": true
         }
@@ -861,13 +1431,17 @@
     }
   },
   {
-    "type": "define_assign_property",
+    "type": "consequence_body",
     "named": true,
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
+        {
+          "type": "array_literal",
+          "named": true
+        },
         {
           "type": "assign_expression",
           "named": true
@@ -905,11 +1479,139 @@
           "named": true
         },
         {
+          "type": "if_expression",
+          "named": true
+        },
+        {
+          "type": "image_macro",
+          "named": true
+        },
+        {
+          "type": "index_expression",
+          "named": true
+        },
+        {
           "type": "int_literal",
           "named": true
         },
         {
+          "type": "linear_grad_macro",
+          "named": true
+        },
+        {
+          "type": "num_units",
+          "named": true
+        },
+        {
+          "type": "radial_grad_macro",
+          "named": true
+        },
+        {
           "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "struct_block_definition",
+          "named": true
+        },
+        {
+          "type": "ternary_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "constant_builtin",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "define_assign_property",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "array_literal",
+          "named": true
+        },
+        {
+          "type": "assign_expression",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "color_literal",
+          "named": true
+        },
+        {
+          "type": "comp_assign_expression",
+          "named": true
+        },
+        {
+          "type": "field_expression",
+          "named": true
+        },
+        {
+          "type": "float_literal",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "if_expression",
+          "named": true
+        },
+        {
+          "type": "image_macro",
+          "named": true
+        },
+        {
+          "type": "index_expression",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "linear_grad_macro",
+          "named": true
+        },
+        {
+          "type": "num_units",
+          "named": true
+        },
+        {
+          "type": "radial_grad_macro",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "struct_block_definition",
           "named": true
         },
         {
@@ -923,10 +1625,6 @@
         {
           "type": "unary_expression",
           "named": true
-        },
-        {
-          "type": "units",
-          "named": true
         }
       ]
     }
@@ -937,14 +1635,94 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
+        {
+          "type": "array_literal",
+          "named": true
+        },
+        {
+          "type": "assign_expression",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "color_literal",
+          "named": true
+        },
+        {
+          "type": "comp_assign_expression",
+          "named": true
+        },
+        {
+          "type": "field_expression",
+          "named": true
+        },
+        {
+          "type": "float_literal",
+          "named": true
+        },
         {
           "type": "identifier",
           "named": true
         },
         {
+          "type": "if_expression",
+          "named": true
+        },
+        {
+          "type": "image_macro",
+          "named": true
+        },
+        {
+          "type": "index_expression",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "linear_grad_macro",
+          "named": true
+        },
+        {
+          "type": "num_units",
+          "named": true
+        },
+        {
+          "type": "radial_grad_macro",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "struct_block_definition",
+          "named": true
+        },
+        {
+          "type": "ternary_expression",
+          "named": true
+        },
+        {
           "type": "type_identifier",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
           "named": true
         }
       ]
@@ -988,6 +1766,22 @@
         "required": true,
         "types": [
           {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "@",
+            "named": false
+          },
+          {
+            "type": "array_literal",
+            "named": true
+          },
+          {
             "type": "assign_expression",
             "named": true
           },
@@ -1024,11 +1818,39 @@
             "named": true
           },
           {
+            "type": "if_expression",
+            "named": true
+          },
+          {
+            "type": "image_macro",
+            "named": true
+          },
+          {
+            "type": "index_expression",
+            "named": true
+          },
+          {
             "type": "int_literal",
             "named": true
           },
           {
+            "type": "linear_grad_macro",
+            "named": true
+          },
+          {
+            "type": "num_units",
+            "named": true
+          },
+          {
+            "type": "radial_grad_macro",
+            "named": true
+          },
+          {
             "type": "string_literal",
+            "named": true
+          },
+          {
+            "type": "struct_block_definition",
             "named": true
           },
           {
@@ -1038,14 +1860,114 @@
           {
             "type": "unary_expression",
             "named": true
-          },
-          {
-            "type": "units",
-            "named": true
           }
         ]
       }
     }
+  },
+  {
+    "type": "for_loop",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "array_literal",
+          "named": true
+        },
+        {
+          "type": "assign_expression",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "color_literal",
+          "named": true
+        },
+        {
+          "type": "comp_assign_expression",
+          "named": true
+        },
+        {
+          "type": "component_item",
+          "named": true
+        },
+        {
+          "type": "field_expression",
+          "named": true
+        },
+        {
+          "type": "float_literal",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "if_expression",
+          "named": true
+        },
+        {
+          "type": "image_macro",
+          "named": true
+        },
+        {
+          "type": "index_expression",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "linear_grad_macro",
+          "named": true
+        },
+        {
+          "type": "num_units",
+          "named": true
+        },
+        {
+          "type": "radial_grad_macro",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "struct_block_definition",
+          "named": true
+        },
+        {
+          "type": "ternary_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "function_builtin",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "function_call_args",
@@ -1055,6 +1977,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "array_literal",
+          "named": true
+        },
         {
           "type": "assign_expression",
           "named": true
@@ -1092,11 +2018,39 @@
           "named": true
         },
         {
+          "type": "if_expression",
+          "named": true
+        },
+        {
+          "type": "image_macro",
+          "named": true
+        },
+        {
+          "type": "index_expression",
+          "named": true
+        },
+        {
           "type": "int_literal",
           "named": true
         },
         {
+          "type": "linear_grad_macro",
+          "named": true
+        },
+        {
+          "type": "num_units",
+          "named": true
+        },
+        {
+          "type": "radial_grad_macro",
+          "named": true
+        },
+        {
           "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "struct_block_definition",
           "named": true
         },
         {
@@ -1106,9 +2060,32 @@
         {
           "type": "unary_expression",
           "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "function_identifier",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "constant_builtin",
+          "named": true
         },
         {
-          "type": "units",
+          "type": "function_builtin",
+          "named": true
+        },
+        {
+          "type": "type_builtin",
+          "named": true
+        },
+        {
+          "type": "variable_builtin",
           "named": true
         }
       ]
@@ -1123,6 +2100,10 @@
       "required": true,
       "types": [
         {
+          "type": "animate_statement",
+          "named": true
+        },
+        {
           "type": "assign_property",
           "named": true
         },
@@ -1135,6 +2116,10 @@
           "named": true
         },
         {
+          "type": "children_macro",
+          "named": true
+        },
+        {
           "type": "component_item",
           "named": true
         },
@@ -1144,6 +2129,18 @@
         },
         {
           "type": "define_property",
+          "named": true
+        },
+        {
+          "type": "for_loop",
+          "named": true
+        },
+        {
+          "type": "state_statement",
+          "named": true
+        },
+        {
+          "type": "transition_statement",
           "named": true
         },
         {
@@ -1166,9 +2163,13 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": false,
       "types": [
+        {
+          "type": "array_literal",
+          "named": true
+        },
         {
           "type": "assign_expression",
           "named": true
@@ -1206,11 +2207,39 @@
           "named": true
         },
         {
+          "type": "if_expression",
+          "named": true
+        },
+        {
+          "type": "image_macro",
+          "named": true
+        },
+        {
+          "type": "index_expression",
+          "named": true
+        },
+        {
           "type": "int_literal",
           "named": true
         },
         {
+          "type": "linear_grad_macro",
+          "named": true
+        },
+        {
+          "type": "num_units",
+          "named": true
+        },
+        {
+          "type": "radial_grad_macro",
+          "named": true
+        },
+        {
           "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "struct_block_definition",
           "named": true
         },
         {
@@ -1220,9 +2249,226 @@
         {
           "type": "unary_expression",
           "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "identifier",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "constant_builtin",
+          "named": true
         },
         {
-          "type": "units",
+          "type": "function_builtin",
+          "named": true
+        },
+        {
+          "type": "type_builtin",
+          "named": true
+        },
+        {
+          "type": "variable_builtin",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "if_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "array_literal",
+          "named": true
+        },
+        {
+          "type": "assign_expression",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "color_literal",
+          "named": true
+        },
+        {
+          "type": "comp_assign_expression",
+          "named": true
+        },
+        {
+          "type": "consequence_body",
+          "named": true
+        },
+        {
+          "type": "field_expression",
+          "named": true
+        },
+        {
+          "type": "float_literal",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "if_expression",
+          "named": true
+        },
+        {
+          "type": "image_macro",
+          "named": true
+        },
+        {
+          "type": "index_expression",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "linear_grad_macro",
+          "named": true
+        },
+        {
+          "type": "num_units",
+          "named": true
+        },
+        {
+          "type": "radial_grad_macro",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "struct_block_definition",
+          "named": true
+        },
+        {
+          "type": "ternary_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "image_macro",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "array_literal",
+          "named": true
+        },
+        {
+          "type": "assign_expression",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "color_literal",
+          "named": true
+        },
+        {
+          "type": "comp_assign_expression",
+          "named": true
+        },
+        {
+          "type": "field_expression",
+          "named": true
+        },
+        {
+          "type": "float_literal",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "if_expression",
+          "named": true
+        },
+        {
+          "type": "image_macro",
+          "named": true
+        },
+        {
+          "type": "index_expression",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "linear_grad_macro",
+          "named": true
+        },
+        {
+          "type": "num_units",
+          "named": true
+        },
+        {
+          "type": "radial_grad_macro",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "struct_block_definition",
+          "named": true
+        },
+        {
+          "type": "ternary_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
           "named": true
         }
       ]
@@ -1242,6 +2488,314 @@
         },
         {
           "type": "type_identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "index_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "array_literal",
+          "named": true
+        },
+        {
+          "type": "assign_expression",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "color_literal",
+          "named": true
+        },
+        {
+          "type": "comp_assign_expression",
+          "named": true
+        },
+        {
+          "type": "field_expression",
+          "named": true
+        },
+        {
+          "type": "float_literal",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "if_expression",
+          "named": true
+        },
+        {
+          "type": "image_macro",
+          "named": true
+        },
+        {
+          "type": "index_expression",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "linear_grad_macro",
+          "named": true
+        },
+        {
+          "type": "num_units",
+          "named": true
+        },
+        {
+          "type": "radial_grad_macro",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "struct_block_definition",
+          "named": true
+        },
+        {
+          "type": "ternary_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "linear_grad_macro",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "array_literal",
+          "named": true
+        },
+        {
+          "type": "assign_expression",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "color_literal",
+          "named": true
+        },
+        {
+          "type": "comp_assign_expression",
+          "named": true
+        },
+        {
+          "type": "field_expression",
+          "named": true
+        },
+        {
+          "type": "float_literal",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "if_expression",
+          "named": true
+        },
+        {
+          "type": "image_macro",
+          "named": true
+        },
+        {
+          "type": "index_expression",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "linear_grad_macro",
+          "named": true
+        },
+        {
+          "type": "num_units",
+          "named": true
+        },
+        {
+          "type": "radial_grad_macro",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "struct_block_definition",
+          "named": true
+        },
+        {
+          "type": "ternary_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "num_units",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "float_literal",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "units",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "radial_grad_macro",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "array_literal",
+          "named": true
+        },
+        {
+          "type": "assign_expression",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "color_literal",
+          "named": true
+        },
+        {
+          "type": "comp_assign_expression",
+          "named": true
+        },
+        {
+          "type": "field_expression",
+          "named": true
+        },
+        {
+          "type": "float_literal",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "if_expression",
+          "named": true
+        },
+        {
+          "type": "image_macro",
+          "named": true
+        },
+        {
+          "type": "index_expression",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "linear_grad_macro",
+          "named": true
+        },
+        {
+          "type": "num_units",
+          "named": true
+        },
+        {
+          "type": "radial_grad_macro",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "struct_block_definition",
+          "named": true
+        },
+        {
+          "type": "ternary_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
           "named": true
         }
       ]
@@ -1270,6 +2824,155 @@
         {
           "type": "import_statement",
           "named": true
+        },
+        {
+          "type": "struct_item",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "state_expression",
+    "named": true,
+    "fields": {
+      "state": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "array_literal",
+          "named": true
+        },
+        {
+          "type": "assign_expression",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "color_literal",
+          "named": true
+        },
+        {
+          "type": "comp_assign_expression",
+          "named": true
+        },
+        {
+          "type": "field_expression",
+          "named": true
+        },
+        {
+          "type": "float_literal",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "if_expression",
+          "named": true
+        },
+        {
+          "type": "image_macro",
+          "named": true
+        },
+        {
+          "type": "index_expression",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "linear_grad_macro",
+          "named": true
+        },
+        {
+          "type": "num_units",
+          "named": true
+        },
+        {
+          "type": "radial_grad_macro",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "struct_block_definition",
+          "named": true
+        },
+        {
+          "type": "ternary_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "state_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "assign_property",
+          "named": true
+        },
+        {
+          "type": "call_back_definition",
+          "named": true
+        },
+        {
+          "type": "call_back_handler",
+          "named": true
+        },
+        {
+          "type": "define_assign_property",
+          "named": true
+        },
+        {
+          "type": "define_property",
+          "named": true
+        },
+        {
+          "type": "state_expression",
+          "named": true
+        },
+        {
+          "type": "two_way_property",
+          "named": true
         }
       ]
     }
@@ -1290,13 +2993,17 @@
     }
   },
   {
-    "type": "ternary_expression",
+    "type": "struct_block_definition",
     "named": true,
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
+        {
+          "type": "array_literal",
+          "named": true
+        },
         {
           "type": "assign_expression",
           "named": true
@@ -1334,11 +3041,39 @@
           "named": true
         },
         {
+          "type": "if_expression",
+          "named": true
+        },
+        {
+          "type": "image_macro",
+          "named": true
+        },
+        {
+          "type": "index_expression",
+          "named": true
+        },
+        {
           "type": "int_literal",
           "named": true
         },
         {
+          "type": "linear_grad_macro",
+          "named": true
+        },
+        {
+          "type": "num_units",
+          "named": true
+        },
+        {
+          "type": "radial_grad_macro",
+          "named": true
+        },
+        {
           "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "struct_block_definition",
           "named": true
         },
         {
@@ -1348,9 +3083,159 @@
         {
           "type": "unary_expression",
           "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "struct_item",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "struct_block_definition",
+          "named": true
         },
         {
-          "type": "units",
+          "type": "type_identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ternary_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "array_literal",
+          "named": true
+        },
+        {
+          "type": "assign_expression",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "color_literal",
+          "named": true
+        },
+        {
+          "type": "comp_assign_expression",
+          "named": true
+        },
+        {
+          "type": "field_expression",
+          "named": true
+        },
+        {
+          "type": "float_literal",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "if_expression",
+          "named": true
+        },
+        {
+          "type": "image_macro",
+          "named": true
+        },
+        {
+          "type": "index_expression",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "linear_grad_macro",
+          "named": true
+        },
+        {
+          "type": "num_units",
+          "named": true
+        },
+        {
+          "type": "radial_grad_macro",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "struct_block_definition",
+          "named": true
+        },
+        {
+          "type": "ternary_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "transition_statement",
+    "named": true,
+    "fields": {
+      "state": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "transition": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "in",
+            "named": false
+          },
+          {
+            "type": "out",
+            "named": false
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "animate_statement",
           "named": true
         }
       ]
@@ -1365,6 +3250,10 @@
       "required": true,
       "types": [
         {
+          "type": "array_literal",
+          "named": true
+        },
+        {
           "type": "assign_expression",
           "named": true
         },
@@ -1401,11 +3290,39 @@
           "named": true
         },
         {
+          "type": "if_expression",
+          "named": true
+        },
+        {
+          "type": "image_macro",
+          "named": true
+        },
+        {
+          "type": "index_expression",
+          "named": true
+        },
+        {
           "type": "int_literal",
           "named": true
         },
         {
+          "type": "linear_grad_macro",
+          "named": true
+        },
+        {
+          "type": "num_units",
+          "named": true
+        },
+        {
+          "type": "radial_grad_macro",
+          "named": true
+        },
+        {
           "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "struct_block_definition",
           "named": true
         },
         {
@@ -1419,9 +3336,37 @@
         {
           "type": "unary_expression",
           "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "type_builtin",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "type_identifier",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "constant_builtin",
+          "named": true
         },
         {
-          "type": "units",
+          "type": "function_builtin",
+          "named": true
+        },
+        {
+          "type": "type_builtin",
+          "named": true
+        },
+        {
+          "type": "variable_builtin",
           "named": true
         }
       ]
@@ -1432,9 +3377,13 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "array_literal",
+          "named": true
+        },
         {
           "type": "assign_expression",
           "named": true
@@ -1472,11 +3421,39 @@
           "named": true
         },
         {
+          "type": "if_expression",
+          "named": true
+        },
+        {
+          "type": "image_macro",
+          "named": true
+        },
+        {
+          "type": "index_expression",
+          "named": true
+        },
+        {
           "type": "int_literal",
           "named": true
         },
         {
+          "type": "linear_grad_macro",
+          "named": true
+        },
+        {
+          "type": "num_units",
+          "named": true
+        },
+        {
+          "type": "radial_grad_macro",
+          "named": true
+        },
+        {
           "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "struct_block_definition",
           "named": true
         },
         {
@@ -1486,16 +3463,17 @@
         {
           "type": "unary_expression",
           "named": true
-        },
-        {
-          "type": "units",
-          "named": true
         }
       ]
     }
   },
   {
     "type": "units",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "variable_builtin",
     "named": true,
     "fields": {}
   },
@@ -1656,6 +3634,18 @@
     "named": false
   },
   {
+    "type": "@",
+    "named": false
+  },
+  {
+    "type": "[",
+    "named": false
+  },
+  {
+    "type": "]",
+    "named": false
+  },
+  {
     "type": "^",
     "named": false
   },
@@ -1664,11 +3654,35 @@
     "named": false
   },
   {
+    "type": "abs",
+    "named": false
+  },
+  {
+    "type": "acos",
+    "named": false
+  },
+  {
     "type": "angle",
     "named": false
   },
   {
+    "type": "animate",
+    "named": false
+  },
+  {
+    "type": "animation-tick",
+    "named": false
+  },
+  {
     "type": "as",
+    "named": false
+  },
+  {
+    "type": "asin",
+    "named": false
+  },
+  {
+    "type": "atan",
     "named": false
   },
   {
@@ -1692,8 +3706,36 @@
     "named": false
   },
   {
+    "type": "ceil",
+    "named": false
+  },
+  {
+    "type": "children_macro",
+    "named": true
+  },
+  {
+    "type": "circle",
+    "named": false
+  },
+  {
+    "type": "color",
+    "named": false
+  },
+  {
     "type": "comment",
     "named": true
+  },
+  {
+    "type": "cos",
+    "named": false
+  },
+  {
+    "type": "debug",
+    "named": false
+  },
+  {
+    "type": "deg",
+    "named": false
   },
   {
     "type": "duration",
@@ -1732,6 +3774,10 @@
     "named": false
   },
   {
+    "type": "else",
+    "named": false
+  },
+  {
     "type": "end",
     "named": false
   },
@@ -1752,24 +3798,28 @@
     "named": true
   },
   {
-    "type": "from",
+    "type": "floor",
     "named": false
   },
   {
-    "type": "function_identifier",
-    "named": true
+    "type": "for",
+    "named": false
+  },
+  {
+    "type": "from",
+    "named": false
   },
   {
     "type": "global",
     "named": false
   },
   {
-    "type": "green",
+    "type": "gray",
     "named": false
   },
   {
-    "type": "identifier",
-    "named": true
+    "type": "green",
+    "named": false
   },
   {
     "type": "if",
@@ -1780,7 +3830,15 @@
     "named": false
   },
   {
+    "type": "image-url",
+    "named": false
+  },
+  {
     "type": "import",
+    "named": false
+  },
+  {
+    "type": "in",
     "named": false
   },
   {
@@ -1796,7 +3854,35 @@
     "named": false
   },
   {
+    "type": "linear-gradient",
+    "named": false
+  },
+  {
+    "type": "log",
+    "named": false
+  },
+  {
+    "type": "max",
+    "named": false
+  },
+  {
+    "type": "min",
+    "named": false
+  },
+  {
+    "type": "mod",
+    "named": false
+  },
+  {
     "type": "ms",
+    "named": false
+  },
+  {
+    "type": "out",
+    "named": false
+  },
+  {
+    "type": "parent",
     "named": false
   },
   {
@@ -1812,6 +3898,10 @@
     "named": false
   },
   {
+    "type": "pow",
+    "named": false
+  },
+  {
     "type": "property",
     "named": false
   },
@@ -1820,7 +3910,35 @@
     "named": false
   },
   {
+    "type": "rad",
+    "named": false
+  },
+  {
+    "type": "radial-gradient",
+    "named": false
+  },
+  {
     "type": "red",
+    "named": false
+  },
+  {
+    "type": "rgb",
+    "named": false
+  },
+  {
+    "type": "root",
+    "named": false
+  },
+  {
+    "type": "round",
+    "named": false
+  },
+  {
+    "type": "sin",
+    "named": false
+  },
+  {
+    "type": "sqrt",
     "named": false
   },
   {
@@ -1828,7 +3946,23 @@
     "named": false
   },
   {
+    "type": "states",
+    "named": false
+  },
+  {
     "type": "string",
+    "named": false
+  },
+  {
+    "type": "struct",
+    "named": false
+  },
+  {
+    "type": "tan",
+    "named": false
+  },
+  {
+    "type": "transitions",
     "named": false
   },
   {
@@ -1840,12 +3974,16 @@
     "named": false
   },
   {
-    "type": "type_identifier",
+    "type": "vis",
     "named": true
   },
   {
-    "type": "vis",
-    "named": true
+    "type": "when",
+    "named": false
+  },
+  {
+    "type": "white",
+    "named": false
   },
   {
     "type": "yellow",
