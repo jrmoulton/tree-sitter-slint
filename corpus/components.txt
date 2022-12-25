@@ -9,11 +9,10 @@ AppWindow := Window {
 --------------------------------------------------------------------------------
 
 (source_file
-  (component_definition
-    name: (user_type_identifier)
-    super_type: (user_type_identifier)
-    (field_declaration_list
-      (field_declaration_list_body))))
+  (component_item
+    (type_identifier)
+    (type_identifier)
+    (comp_body)))
 
 ================================================================================
 Visibility modifier
@@ -26,12 +25,11 @@ export AppWindow := Window {
 --------------------------------------------------------------------------------
 
 (source_file
-  (component_definition
-    (visibility_modifier)
-    name: (user_type_identifier)
-    super_type: (user_type_identifier)
-    (field_declaration_list
-      (field_declaration_list_body))))
+  (component_item
+    (vis)
+    (type_identifier)
+    (type_identifier)
+    (comp_body)))
 
 ================================================================================
 A window with a sub component
@@ -46,20 +44,16 @@ AppWindow := Window {
 --------------------------------------------------------------------------------
 
 (source_file
-  (component_definition
-    name: (user_type_identifier)
-    super_type: (user_type_identifier)
-    (field_declaration_list
-      (field_declaration_list_body
-        (component_definition
-          super_type: (user_type_identifier)
-          (field_declaration_list
-            (field_declaration_list_body)))))))
+  (component_item
+    (type_identifier)
+    (type_identifier)
+    (comp_body
+      (component_item
+        (type_identifier)
+        (comp_body)))))
 
 ================================================================================
 Setting a property
-TODO: Fix `variable_set_equal`
-TODO: Rename `prev_name`
 ================================================================================
 
 MyApp := Window {
@@ -69,19 +63,15 @@ MyApp := Window {
 --------------------------------------------------------------------------------
 
 (source_file
-  (component_definition
-    name: (user_type_identifier)
-    super_type: (user_type_identifier)
-    (field_declaration_list
-      (field_declaration_list_body
-        (variable_set_equal
-          prev_name: (var_identifier)
-          (assignment_prec_operator)
-          (value
-            (value_with_units
-              (number
-                (int_number))
-              (unit_type))))))))
+  (component_item
+    (type_identifier)
+    (type_identifier)
+    (comp_body
+      (assign_property
+        (identifier)
+        (num_units
+          (int_literal)
+          (units))))))
 
 ================================================================================
 Property declaration
@@ -94,14 +84,14 @@ Example := Rectangle {
 --------------------------------------------------------------------------------
 
 (source_file
-  (component_definition
-    name: (user_type_identifier)
-    super_type: (user_type_identifier)
-    (field_declaration_list
-      (field_declaration_list_body
-        (property_definition
-          type: (builtin_type_identifier)
-          name: (var_identifier))))))
+  (component_item
+    (type_identifier)
+    (type_identifier)
+    (comp_body
+      (define_property
+        (type_identifier
+          (type_builtin))
+        (identifier)))))
 
 ================================================================================
 Two way binding
@@ -114,17 +104,17 @@ Example := Window {
 --------------------------------------------------------------------------------
 
 (source_file
-  (component_definition
-    (user_type_identifier)
-    (user_type_identifier)
-    (field_declaration_list
-      (field_declaration_list_body
-        (property_definition
-          (builtin_type_identifier)
-          (var_identifier)
-          (property_expr
-            (var_identifier
-              (post_identifier))))))))
+  (component_item
+    (type_identifier)
+    (type_identifier)
+    (comp_body
+      (two_way_property
+        (type_identifier
+          (type_builtin))
+        (identifier)
+        (field_expression
+          (identifier)
+          (identifier))))))
 
 ================================================================================
 Relative values
@@ -137,24 +127,20 @@ Example := Window {
 --------------------------------------------------------------------------------
 
 (source_file
-  (component_definition
-    (user_type_identifier)
-    (user_type_identifier)
-    (field_declaration_list
-      (field_declaration_list_body
-        (variable_set_equal
-          (var_identifier)
-          (assignment_prec_operator)
-          (mult_binary_expression
-            (var_identifier
-              (reference_identifier)
-              (post_identifier))
-            (mult_prec_operator)
-            (value
-              (value_with_units
-                (number
-                  (int_number))
-                (unit_type)))))))))
+  (component_item
+    (type_identifier)
+    (type_identifier)
+    (comp_body
+      (assign_property
+        (identifier)
+        (binary_expression
+          (field_expression
+            (identifier
+              (variable_builtin))
+            (identifier))
+          (num_units
+            (int_literal)
+            (units)))))))
 
 ================================================================================
 Define and set a property
@@ -167,20 +153,17 @@ Example := Window {
 --------------------------------------------------------------------------------
 
 (source_file
-  (component_definition
-    (user_type_identifier)
-    (user_type_identifier)
-    (field_declaration_list
-      (field_declaration_list_body
-        (property_definition
-          (builtin_type_identifier)
-          (var_identifier)
-          (property_expr
-            (value
-              (value_with_units
-                (number
-                  (int_number))
-                (unit_type)))))))))
+  (component_item
+    (type_identifier)
+    (type_identifier)
+    (comp_body
+      (define_assign_property
+        (type_identifier
+          (type_builtin))
+        (identifier)
+        (num_units
+          (int_literal)
+          (units))))))
 
 ================================================================================
 Named sub component
@@ -195,24 +178,19 @@ Example := Rectangle {
 --------------------------------------------------------------------------------
 
 (source_file
-  (component_definition
-    (user_type_identifier)
-    (user_type_identifier)
-    (field_declaration_list
-      (field_declaration_list_body
-        (component_definition
-          (user_type_identifier)
-          (user_type_identifier)
-          (field_declaration_list
-            (field_declaration_list_body
-              (variable_set_equal
-                (var_identifier)
-                (assignment_prec_operator)
-                (value
-                  (value_with_units
-                    (number
-                      (int_number))
-                    (unit_type)))))))))))
+  (component_item
+    (type_identifier)
+    (type_identifier)
+    (comp_body
+      (component_item
+        (type_identifier)
+        (type_identifier)
+        (comp_body
+          (assign_property
+            (identifier)
+            (num_units
+              (int_literal)
+              (units))))))))
 
 ================================================================================
 Conditional named component
@@ -226,24 +204,21 @@ Example := Window {
 --------------------------------------------------------------------------------
 
 (source_file
-  (component_definition
-    (user_type_identifier)
-    (user_type_identifier)
-    (field_declaration_list
-      (field_declaration_list_body
-        (if_statement_definition
-          (var_identifier
-            (post_identifier))
-          (component_definition
-            (user_type_identifier)
-            (user_type_identifier)
-            (field_declaration_list
-              (field_declaration_list_body
-                (variable_set_equal
-                  (var_identifier)
-                  (assignment_prec_operator)
-                  (value
-                    (language_constant)))))))))))
+  (component_item
+    (type_identifier)
+    (type_identifier)
+    (comp_body
+      (component_item
+        (field_expression
+          (identifier)
+          (identifier))
+        (type_identifier)
+        (type_identifier)
+        (comp_body
+          (assign_property
+            (identifier)
+            (identifier
+              (constant_builtin))))))))
 
 ================================================================================
 Conditional unnamed component
@@ -257,22 +232,43 @@ Example := Window {
 --------------------------------------------------------------------------------
 
 (source_file
-  (component_definition
-    (user_type_identifier)
-    (user_type_identifier)
-    (field_declaration_list
-      (field_declaration_list_body
-        (if_statement_definition
-          (unary_expression
-            (unary_prec_operator)
-            (var_identifier
-              (post_identifier)))
-          (component_definition
-            (user_type_identifier)
-            (field_declaration_list
-              (field_declaration_list_body
-                (variable_set_equal
-                  (var_identifier)
-                  (assignment_prec_operator)
-                  (value
-                    (language_constant)))))))))))
+  (component_item
+    (type_identifier)
+    (type_identifier)
+    (comp_body
+      (component_item
+        (unary_expression
+          (field_expression
+            (identifier)
+            (identifier)))
+        (type_identifier)
+        (comp_body
+          (assign_property
+            (identifier)
+            (identifier
+              (constant_builtin))))))))
+
+================================================================================
+Function as scoped ident
+================================================================================
+
+Example := Window {
+    property<float> x1: "5.0".to-float();
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (component_item
+    (type_identifier)
+    (type_identifier)
+    (comp_body
+      (define_assign_property
+        (type_identifier
+          (type_builtin))
+        (identifier)
+        (call_expression
+          (field_expression
+            (string_literal)
+            (identifier))
+          (function_call_args))))))

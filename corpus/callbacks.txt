@@ -1,6 +1,5 @@
 ================================================================================
-Setting a callback
-TODO: single expression `;` are optional
+Callback handler with assign statement
 ================================================================================
 
 Example := Window {
@@ -12,29 +11,22 @@ Example := Window {
 --------------------------------------------------------------------------------
 
 (source_file
-  (component_definition
-    (user_type_identifier)
-    (user_type_identifier)
-    (field_declaration_list
-      (field_declaration_list_body
-        (component_definition
-          (user_type_identifier)
-          (field_declaration_list
-            (field_declaration_list_body
-              (callback_event
-                (function_identifier)
-                (field_declaration_list
-                  (field_declaration_list_body
-                    (variable_set_equal
-                      (var_identifier)
-                      (assignment_prec_operator)
-                      (value
-                        (number
-                          (int_number)))
-                      (MISSING ";"))))))))))))
+  (component_item
+    (type_identifier)
+    (type_identifier)
+    (comp_body
+      (component_item
+        (type_identifier)
+        (comp_body
+          (call_back_handler
+            (function_identifier)
+            (handler_body
+              (comp_assign_expression
+                (identifier)
+                (int_literal)))))))))
 
 ================================================================================
-Declare a callback
+Callback definition
 ================================================================================
 
 Example := Rectangle {
@@ -44,16 +36,15 @@ Example := Rectangle {
 --------------------------------------------------------------------------------
 
 (source_file
-  (component_definition
-    (user_type_identifier)
-    (user_type_identifier)
-    (field_declaration_list
-      (field_declaration_list_body
-        (callback_definition
-          (function_identifier))))))
+  (component_item
+    (type_identifier)
+    (type_identifier)
+    (comp_body
+      (call_back_definition
+        (function_identifier)))))
 
 ================================================================================
-Declare callback with parameters
+Callback definition with parameters
 ================================================================================
 
 Example := Rectangle {
@@ -63,26 +54,85 @@ Example := Rectangle {
 --------------------------------------------------------------------------------
 
 (source_file
-  (component_definition
-    (user_type_identifier)
-    (user_type_identifier)
-    (field_declaration_list
-      (field_declaration_list_body
-        (callback_definition
-          (function_identifier)
-          (call_signature
-            (formal_parameters
-              (formal_parameter
-                (builtin_type_identifier))
-              (formal_parameter
-                (builtin_type_identifier)))))))))
+  (component_item
+    (type_identifier)
+    (type_identifier)
+    (comp_body
+      (call_back_definition
+        (function_identifier)
+        (call_back_parameters
+          (identifier
+            (type_builtin))
+          (identifier
+            (type_builtin)))))))
 
 ================================================================================
-Set a callback with parameters
+Callback definition with parameters and return type
 ================================================================================
 
 Example := Rectangle {
-    hello(aa, bb) => { aa + bb }
+    callback hello(int, string) -> int;
 }
 
 --------------------------------------------------------------------------------
+
+(source_file
+  (component_item
+    (type_identifier)
+    (type_identifier)
+    (comp_body
+      (call_back_definition
+        (function_identifier)
+        (call_back_parameters
+          (identifier
+            (type_builtin))
+          (identifier
+            (type_builtin)))
+        (identifier
+          (type_builtin))))))
+
+================================================================================
+Callback handler with parameters
+================================================================================
+
+Example := Rectangle {
+    hello(aa, bb) => { aa + bb; }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (component_item
+    (type_identifier)
+    (type_identifier)
+    (comp_body
+      (call_back_handler
+        (function_identifier)
+        (call_back_parameters
+          (identifier)
+          (identifier))
+        (handler_body
+          (binary_expression
+            (identifier)
+            (identifier)))))))
+
+================================================================================
+Callback alias
+================================================================================
+
+Example := Rectangle {
+    callback clicked <=> area.clicked;
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (component_item
+    (type_identifier)
+    (type_identifier)
+    (comp_body
+      (call_back_definition
+        (function_identifier)
+        (field_expression
+          (identifier)
+          (identifier))))))
