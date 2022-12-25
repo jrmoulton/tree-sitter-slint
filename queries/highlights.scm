@@ -23,6 +23,8 @@
   (identifier) @type)
 (transition_statement state: (identifier) @field)
 (state_expression state: (identifier) @field)
+(struct_block_definition 
+  (identifier) @field)
 
 ; (state_identifier) @field
 

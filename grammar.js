@@ -46,7 +46,13 @@ module.exports = grammar({
       ),
 
     struct_block_definition: ($) =>
-      seq("{", commaSep(seq($.identifier, ":", $._expression)), "}"),
+      seq(
+        "{",
+        commaSep(
+          seq(field("field", $.identifier), ":", field("type", $._expression)),
+        ),
+        "}",
+      ),
 
     export_statement: ($) =>
       seq(

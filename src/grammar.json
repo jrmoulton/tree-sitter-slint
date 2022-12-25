@@ -71,16 +71,24 @@
                   "type": "SEQ",
                   "members": [
                     {
-                      "type": "SYMBOL",
-                      "name": "identifier"
+                      "type": "FIELD",
+                      "name": "field",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "identifier"
+                      }
                     },
                     {
                       "type": "STRING",
                       "value": ":"
                     },
                     {
-                      "type": "SYMBOL",
-                      "name": "_expression"
+                      "type": "FIELD",
+                      "name": "type",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "_expression"
+                      }
                     }
                   ]
                 },
@@ -100,16 +108,24 @@
                             "type": "SEQ",
                             "members": [
                               {
-                                "type": "SYMBOL",
-                                "name": "identifier"
+                                "type": "FIELD",
+                                "name": "field",
+                                "content": {
+                                  "type": "SYMBOL",
+                                  "name": "identifier"
+                                }
                               },
                               {
                                 "type": "STRING",
                                 "value": ":"
                               },
                               {
-                                "type": "SYMBOL",
-                                "name": "_expression"
+                                "type": "FIELD",
+                                "name": "type",
+                                "content": {
+                                  "type": "SYMBOL",
+                                  "name": "_expression"
+                                }
                               }
                             ]
                           },
