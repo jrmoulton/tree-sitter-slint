@@ -32,7 +32,7 @@ Example := Window {
 Named struct
 ================================================================================
 
-struct Player := {
+struct Player {
     name: string,
     score: int,
 }

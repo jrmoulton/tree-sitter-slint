@@ -3501,6 +3501,11 @@
     "fields": {}
   },
   {
+    "type": "vis",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "!",
     "named": false
   },
@@ -3749,6 +3754,10 @@
     "named": true
   },
   {
+    "type": "component",
+    "named": false
+  },
+  {
     "type": "cos",
     "named": false
   },
@@ -3809,6 +3818,10 @@
     "named": true
   },
   {
+    "type": "export",
+    "named": false
+  },
+  {
     "type": "false",
     "named": false
   },
@@ -3862,6 +3875,14 @@
   },
   {
     "type": "in",
+    "named": false
+  },
+  {
+    "type": "in-out",
+    "named": false
+  },
+  {
+    "type": "inherits",
     "named": false
   },
   {
@@ -3995,10 +4016,6 @@
   {
     "type": "true",
     "named": false
-  },
-  {
-    "type": "vis",
-    "named": true
   },
   {
     "type": "when",

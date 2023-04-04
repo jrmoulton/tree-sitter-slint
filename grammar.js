@@ -39,9 +39,9 @@ module.exports = grammar({
 
     struct_item: ($) =>
       seq(
+        optional($.vis),
         "struct",
         $._type_identifier,
-        ":=",
         $.struct_block_definition,
       ),
 
@@ -69,7 +69,6 @@ module.exports = grammar({
         optional($.vis),
         "global",
         $._type_identifier,
-        ":=",
         $._component_body,
       ),
 
@@ -90,8 +89,15 @@ module.exports = grammar({
       seq(
         optional($._conditional_element),
         optional($.vis),
+        optional("component"),
         $._type_identifier,
-        optional(seq(":=", $._type_identifier)),
+        optional(seq(
+          choice(
+            ":=",
+            "inherits",
+          ),
+          $._type_identifier
+        )),
         alias($._component_body, $.comp_body),
       ),
 
@@ -209,6 +215,13 @@ module.exports = grammar({
 
     _define_property: ($) =>
       seq(
+        optional(
+          choice(
+            "in",
+            "out",
+            "in-out"
+          )
+        ),
         "property",
         optional(
           seq(
