@@ -20,10 +20,7 @@ const PREC = {
 module.exports = grammar({
   name: "slint",
 
-  extras: ($) => [
-    /\s|\\\r?\n/,
-    $.comment,
-  ],
+  extras: ($) => [/\s|\\\r?\n/, $.comment],
 
   rules: {
     source_file: ($) => repeat($._item),
@@ -34,7 +31,7 @@ module.exports = grammar({
         $.import_statement,
         $.export_statement,
         $.global_single,
-        $.struct_item,
+        $.struct_item
       ),
 
     struct_item: ($) =>
@@ -42,16 +39,16 @@ module.exports = grammar({
         optional($.vis),
         "struct",
         $._type_identifier,
-        $.struct_block_definition,
+        $.struct_block_definition
       ),
 
     struct_block_definition: ($) =>
       seq(
         "{",
         commaSep(
-          seq(field("field", $.identifier), ":", field("type", $._expression)),
+          seq(field("field", $.identifier), ":", field("type", $._expression))
         ),
-        "}",
+        "}"
       ),
 
     export_statement: ($) =>
@@ -59,30 +56,20 @@ module.exports = grammar({
         $.vis,
         "{",
         commaSep(
-          seq($._type_identifier, optional(seq("as", $._type_identifier))),
+          seq($._type_identifier, optional(seq("as", $._type_identifier)))
         ),
-        "}",
+        "}"
       ),
 
     global_single: ($) =>
-      seq(
-        optional($.vis),
-        "global",
-        $._type_identifier,
-        $._component_body,
-      ),
+      seq(optional($.vis), "global", $._type_identifier, $._component_body),
 
     import_statement: ($) =>
       seq(
         "import",
-        optional(seq(
-          "{",
-          commaSep($._type_identifier),
-          "}",
-          "from",
-        )),
+        optional(seq("{", commaSep($._type_identifier), "}", "from")),
         $.string_literal,
-        ";",
+        ";"
       ),
 
     component_item: ($) =>
@@ -91,14 +78,8 @@ module.exports = grammar({
         optional($.vis),
         optional("component"),
         $._type_identifier,
-        optional(seq(
-          choice(
-            ":=",
-            "inherits",
-          ),
-          $._type_identifier
-        )),
-        alias($._component_body, $.comp_body),
+        optional(seq(choice(":=", "inherits"), $._type_identifier)),
+        alias($._component_body, $.comp_body)
       ),
 
     _conditional_element: ($) => seq("if", $._expression, ":"),
@@ -114,10 +95,10 @@ module.exports = grammar({
             $.animate_statement,
             $.state_statement,
             $.transition_statement,
-            seq("@", $.children_macro),
-          ),
+            seq("@", $.children_macro)
+          )
         ),
-        "}",
+        "}"
       ),
 
     transition_statement: ($) =>
@@ -131,10 +112,10 @@ module.exports = grammar({
             ":",
             "{",
             $.animate_statement,
-            "}",
-          ),
+            "}"
+          )
         ),
-        "]",
+        "]"
       ),
 
     state_statement: ($) =>
@@ -142,7 +123,7 @@ module.exports = grammar({
         "states",
         "[",
         repeat(seq($.state_expression, ":", "{", repeat($._property), "}")),
-        "]",
+        "]"
       ),
 
     animate_statement: ($) =>
@@ -153,19 +134,12 @@ module.exports = grammar({
           choice(commaSep($._expression), "*"),
           "{",
           repeat($._property),
-          "}",
-        ),
+          "}"
+        )
       ),
 
     for_loop: ($) =>
-      seq(
-        "for",
-        $._expression,
-        "in",
-        $._expression,
-        ":",
-        $.component_item,
-      ),
+      seq("for", $._expression, "in", $._expression, ":", $.component_item),
 
     _property: ($) =>
       choice(
@@ -174,7 +148,7 @@ module.exports = grammar({
         $.define_assign_property,
         $.two_way_property,
         $.call_back_definition,
-        $.call_back_handler,
+        $.call_back_handler
       ),
 
     call_back_definition: ($) =>
@@ -185,10 +159,10 @@ module.exports = grammar({
         optional(
           choice(
             seq("->", field("return_type", $.identifier)),
-            seq("<=>", field("alias", $.field_expression)),
-          ),
+            seq("<=>", field("alias", $.field_expression))
+          )
         ),
-        ";",
+        ";"
       ),
 
     call_back_parameters: ($) => seq("(", commaSep($.identifier), ")"),
@@ -198,16 +172,10 @@ module.exports = grammar({
         $._function_identifier,
         optional($.call_back_parameters),
         "=>",
-        $.handler_body,
+        $.handler_body
       ),
 
-    handler_body: ($) =>
-      seq(
-        "{",
-        optional($._expression),
-        optional(";"),
-        "}",
-      ),
+    handler_body: ($) => seq("{", optional($._expression), optional(";"), "}"),
 
     two_way_property: ($) => seq($._define_property, "<=>", $._expression, ";"),
 
@@ -215,13 +183,7 @@ module.exports = grammar({
 
     _define_property: ($) =>
       seq(
-        optional(
-          choice(
-            "in",
-            "out",
-            "in-out"
-          )
-        ),
+        optional(choice("in", "out", "in-out")),
         "property",
         optional(
           seq(
@@ -229,43 +191,38 @@ module.exports = grammar({
             choice(
               $._type_identifier,
               $.array_literal,
-              $.struct_block_definition,
+              $.struct_block_definition
             ),
-            ">",
-          ),
+            ">"
+          )
         ),
-        $._expression,
+        $._expression
       ),
 
     _assign_property: ($) =>
-      seq(
-        optional($._expression),
-        ":",
-        seq(
-          $._expression,
-          ";",
-        ),
-      ),
+      seq(optional($._expression), ":", seq($._expression, ";")),
 
     _expression: ($) =>
       prec.left(choice(seq("(", $._all_expressions, ")"), $._all_expressions)),
 
     _all_expressions: ($) =>
-      prec.left(choice(
-        $.unary_expression,
-        $.binary_expression,
-        $.ternary_expression,
-        $.call_expression,
-        $.index_expression,
-        $.identifier,
-        $.if_expression,
-        $.assign_expression,
-        $.comp_assign_expression,
-        $.field_expression,
-        $.struct_block_definition,
-        $._macro,
-        $._literal,
-      )),
+      prec.left(
+        choice(
+          $.unary_expression,
+          $.binary_expression,
+          $.ternary_expression,
+          $.call_expression,
+          $.index_expression,
+          $.identifier,
+          $.if_expression,
+          $.assign_expression,
+          $.comp_assign_expression,
+          $.field_expression,
+          $.struct_block_definition,
+          $._macro,
+          $._literal
+        )
+      ),
 
     if_expression: ($) =>
       seq(
@@ -275,8 +232,8 @@ module.exports = grammar({
         ")",
         $.consequence_body,
         optional(
-          choice(seq("else", $.if_expression), seq("else", $.consequence_body)),
-        ),
+          choice(seq("else", $.if_expression), seq("else", $.consequence_body))
+        )
       ),
 
     consequence_body: ($) =>
@@ -295,8 +252,8 @@ module.exports = grammar({
           field("left", $._expression),
           "=",
           field("right", $._expression),
-          optional(";"),
-        ),
+          optional(";")
+        )
       ),
 
     // TODO: Vet operators for what is actually included in slint
@@ -307,21 +264,10 @@ module.exports = grammar({
           field("left", $._expression),
           field(
             "operator",
-            choice(
-              "+=",
-              "-=",
-              "*=",
-              "/=",
-              "%=",
-              "&=",
-              "|=",
-              "^=",
-              "<<=",
-              ">>=",
-            ),
+            choice("+=", "-=", "*=", "/=", "%=", "&=", "|=", "^=", "<<=", ">>=")
           ),
-          field("right", $._expression),
-        ),
+          field("right", $._expression)
+        )
       ),
 
     call_expression: ($) =>
@@ -329,8 +275,8 @@ module.exports = grammar({
         PREC.call,
         seq(
           field("function", $._expression),
-          field("arguments", $.function_call_args),
-        ),
+          field("arguments", $.function_call_args)
+        )
       ),
 
     function_call_args: ($) => seq("(", commaSep($._expression), ")"),
@@ -338,14 +284,7 @@ module.exports = grammar({
     field_expression: ($) =>
       prec(
         PREC.field,
-        seq(
-          field("value", $._expression),
-          ".",
-          field(
-            "field",
-            $.identifier,
-          ),
-        ),
+        seq(field("value", $._expression), ".", field("field", $.identifier))
       ),
 
     bool_literal: (_$) => choice("true", "false"),
@@ -373,34 +312,21 @@ module.exports = grammar({
             seq(
               field("left", $._expression),
               field("operator", operator),
-              field("right", $._expression),
-            ),
+              field("right", $._expression)
+            )
           )
-        ),
+        )
       );
     },
 
     ternary_expression: ($) =>
       prec.left(
         PREC.ternary,
-        seq(
-          $._expression,
-          "?",
-          $._expression,
-          ":",
-          $._expression,
-        ),
+        seq($._expression, "?", $._expression, ":", $._expression)
       ),
 
     _macro: ($) =>
-      seq(
-        "@",
-        choice(
-          $.linear_grad_macro,
-          $.radial_grad_macro,
-          $.image_macro,
-        ),
-      ),
+      seq("@", choice($.linear_grad_macro, $.radial_grad_macro, $.image_macro)),
     children_macro: (_$) => "children",
 
     linear_grad_macro: ($) =>
@@ -410,7 +336,7 @@ module.exports = grammar({
         $._expression,
         ",",
         commaSep(seq($._expression, $._expression)),
-        ")",
+        ")"
       ),
 
     radial_grad_macro: ($) =>
@@ -420,17 +346,11 @@ module.exports = grammar({
         "circle",
         ",",
         commaSep(seq($._expression, $._expression)),
-        ")",
+        ")"
       ),
 
     // I think this is fine to leave as an expression. Although it might need to just be a string_literal
-    image_macro: ($) =>
-      seq(
-        "image-url",
-        "(",
-        $._expression,
-        ")",
-      ),
+    image_macro: ($) => seq("image-url", "(", $._expression, ")"),
 
     _literal: ($) =>
       choice(
@@ -438,7 +358,7 @@ module.exports = grammar({
         $.string_literal,
         $.array_literal,
         $.bool_literal,
-        $.color_literal,
+        $.color_literal
       ),
 
     array_literal: ($) => seq("[", commaSep($._expression), "]"),
@@ -450,20 +370,18 @@ module.exports = grammar({
       choice(
         seq(
           '"',
-          repeat(choice(
-            $._unescaped_double_string_fragment,
-            $.escape_sequence,
-          )),
-          '"',
+          repeat(
+            choice($._unescaped_double_string_fragment, $.escape_sequence)
+          ),
+          '"'
         ),
         seq(
           "'",
-          repeat(choice(
-            $._unescaped_single_string_fragment,
-            $.escape_sequence,
-          )),
-          "'",
-        ),
+          repeat(
+            choice($._unescaped_single_string_fragment, $.escape_sequence)
+          ),
+          "'"
+        )
       ),
 
     _unescaped_double_string_fragment: (_$) =>
@@ -481,9 +399,9 @@ module.exports = grammar({
             /[^xu]/,
             /u[0-9a-fA-F]{4}/,
             /u{[0-9a-fA-F]+}/,
-            /x[0-9a-fA-F]{2}/,
-          ),
-        ),
+            /x[0-9a-fA-F]{2}/
+          )
+        )
       ),
     /////////////////////////////////////////////////////////////////////
 
@@ -493,43 +411,15 @@ module.exports = grammar({
     _ident_reg: (_$) => /[_\p{XID_Start}][_\-\p{XID_Continue}]*/,
 
     color_literal: (_$) =>
-      seq(
-        "#",
-        choice(
-          /[\da-fA-F]{3}/,
-          /[\da-fA-F]{6}/,
-          /[\da-fA-F]{8}/,
-        ),
-      ),
+      seq("#", choice(/[\da-fA-F]{3}/, /[\da-fA-F]{6}/, /[\da-fA-F]{8}/)),
 
-    _number: ($) =>
-      choice(
-        choice(
-          $.int_literal,
-          $.float_literal,
-        ),
-        $.num_units,
-      ),
-    num_units: ($) =>
-      seq(
-        choice(
-          $.int_literal,
-          $.float_literal,
-        ),
-        $.units,
-      ),
+    _number: ($) => choice(choice($.int_literal, $.float_literal), $.num_units),
+    num_units: ($) => seq(choice($.int_literal, $.float_literal), $.units),
 
     int_literal: (_$) => /\d+/,
     float_literal: (_$) => /\d+\.\d+/,
 
-    units: (_$) =>
-      choice(
-        "px",
-        "ms",
-        "%",
-        "deg",
-        "rad",
-      ),
+    units: (_$) => choice("px", "ms", "%", "deg", "rad"),
     _type_identifier: ($) => alias($.identifier, $.type_identifier),
     _function_identifier: ($) =>
       prec.left(PREC.call, alias($.identifier, $.function_identifier)),
@@ -539,7 +429,7 @@ module.exports = grammar({
         $.constant_builtin,
         $.type_builtin,
         $.function_builtin,
-        $.variable_builtin,
+        $.variable_builtin
       ),
 
     constant_builtin: (_$) =>
@@ -560,7 +450,7 @@ module.exports = grammar({
         "yellow",
         "white",
         "gray",
-        "transparent",
+        "transparent"
       ),
 
     type_builtin: (_$) =>
@@ -576,7 +466,7 @@ module.exports = grammar({
         "percent",
         "physical-length",
         "physical_length",
-        "string",
+        "string"
       ),
 
     function_builtin: (_$) =>
@@ -599,20 +489,18 @@ module.exports = grammar({
         "sqrt",
         "pow",
         "log",
-        "rgb",
+        "rgb"
       ),
     variable_builtin: (_$) => choice("easing", "duration", "parent", "root"),
 
     // https://github.com/tree-sitter/tree-sitter-c/blob/e348e8ec5efd3aac020020e4af53d2ff18f393a9/grammar.js#L1009
     comment: (_$) =>
-      token(choice(
-        seq("//", /(\\(.|\r?\n)|[^\\\n])*/),
-        seq(
-          "/*",
-          /[^*]*\*+([^/*][^*]*\*+)*/,
-          "/",
-        ),
-      )),
+      token(
+        choice(
+          seq("//", /(\\(.|\r?\n)|[^\\\n])*/),
+          seq("/*", /[^*]*\*+([^/*][^*]*\*+)*/, "/")
+        )
+      ),
   },
 });
 
