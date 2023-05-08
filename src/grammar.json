@@ -37,16 +37,24 @@
       "type": "SEQ",
       "members": [
         {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "export"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
           "type": "STRING",
           "value": "struct"
         },
         {
           "type": "SYMBOL",
           "name": "_type_identifier"
-        },
-        {
-          "type": "STRING",
-          "value": ":="
         },
         {
           "type": "SYMBOL",
@@ -284,10 +292,6 @@
           "name": "_type_identifier"
         },
         {
-          "type": "STRING",
-          "value": ":="
-        },
-        {
           "type": "SYMBOL",
           "name": "_component_body"
         }
@@ -404,6 +408,18 @@
           ]
         },
         {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "component"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
           "type": "SYMBOL",
           "name": "_type_identifier"
         },
@@ -414,8 +430,17 @@
               "type": "SEQ",
               "members": [
                 {
-                  "type": "STRING",
-                  "value": ":="
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": ":="
+                    },
+                    {
+                      "type": "STRING",
+                      "value": "inherits"
+                    }
+                  ]
                 },
                 {
                   "type": "SYMBOL",
@@ -1016,6 +1041,31 @@
     "_define_property": {
       "type": "SEQ",
       "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "in"
+                },
+                {
+                  "type": "STRING",
+                  "value": "out"
+                },
+                {
+                  "type": "STRING",
+                  "value": "in-out"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
         {
           "type": "STRING",
           "value": "property"

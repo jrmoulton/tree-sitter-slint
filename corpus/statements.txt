@@ -15,7 +15,7 @@ import { Button } from "std-widgets.slint";
 Global Singleton
 ================================================================================
 
-global Palette := {
+global Palette {
     property<color> primary: blue;
 }
 
@@ -62,7 +62,7 @@ export { Button as ColorButton }
 More complicated conditional statement
 ================================================================================
 
-example := Rectangle {
+component example inherits Rectangle {
     clicked => {
         if (condition) {
             foo = 42;
@@ -105,7 +105,7 @@ example := Rectangle {
 For-in statement
 ================================================================================
 
-Example := Window {
+component Example inherits Window {
     for my-color[index] in [ #e11, #1a2, #23d ]: Rectangle {
         background: my-color;
     }
@@ -137,7 +137,7 @@ Example := Window {
 For-in anonymouse statement struct as property
 ================================================================================
 
-Example := Window {
+component Example inherits Window {
     property <[{foo: string, col: color}]> model: [
         {foo: "abc", col: #f00 },
         {foo: "def", col: #00f },
@@ -234,7 +234,7 @@ Animate two variables together statement
 ================================================================================
 
 
-Example := Window {
+component Example inherits Window {
     animate x, y { duration: 100ms; }
 }
 
@@ -260,7 +260,7 @@ State statement
 ================================================================================
 
 
-Example := Window {
+component Example inherits Window {
     states [
         disabled when !is-enabled : {
             background: gray;

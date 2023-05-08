@@ -4,7 +4,10 @@
   "description": "A Tree Sitter Parse for Slint",
   "main": "bindings/node",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "prettier --check grammar.js",
+    "format": "prettier --write grammar.js",
+    "build": "tree-sitter generate",
+    "test": "tree-sitter test"
   },
   "keywords": [
     "Tree Sitter",
@@ -17,6 +20,7 @@
     "nan": "^2.15.0"
   },
   "devDependencies": {
-    "tree-sitter-cli": "^0.20.4"
+    "tree-sitter-cli": "^0.20.4",
+    "prettier": "^2.7.1"
   }
 }
